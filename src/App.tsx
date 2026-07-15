@@ -232,7 +232,7 @@ const App = () => {
           {isPlaying ? <Music size={24} /> : <div className="relative"><Music size={24} /><div className="absolute top-0 right-0 w-2 h-2 bg-white rounded-full"></div></div>}
         </button>
         {/* MÚSICA: Para a versão final, substitua o src abaixo pelo arquivo 'just-the-two-of-us.mp3' na pasta public */}
-        <audio ref={audioRef} loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
+        <audio ref={audioRef} loop src="/just-the-two-of-us.mp3" />
       </div>
 
       {/* --- HEADER / NAV --- */}
