@@ -13,12 +13,35 @@ const colors = {
   paleSage: '#CCCDB6',
 };
 
-// --- SIMULAÇÃO DE BANCO DE DADOS DE CONVIDADOS ---
+// --- LINK DO SHEETDB (O SEU GOOGLE SHEETS) ---
+// Cole aqui o link gerado pelo sheetdb.io (entre as aspas)
+const SHEETDB_URL = "https://sheetdb.io/api/v1/etzl19r1qjpk4"; 
+
+// --- BANCO DE DADOS DE CONVIDADOS (AGRUPADOS) ---
 const GUEST_DATABASE = [
-  { id: 1, fullName: "João Silva", allowedGuests: 1 },
-  { id: 2, fullName: "Maria Oliveira", allowedGuests: 2 },
-  { id: 3, fullName: "Carlos e Ana Souza", allowedGuests: 2 },
-  { id: 4, fullName: "Família Pereira", allowedGuests: 4 },
+  { 
+    id: 'convite-01', 
+    groupName: "Família Costa",
+    members: [
+      { id: 'c1-m1', name: "Ciro Costa" },
+      { id: 'c1-m2', name: "Letícia Costa" }
+    ] 
+  },
+  { 
+    id: 'convite-02', 
+    groupName: "Família Amarante",
+    members: [
+      { id: 'c2-m1', name: "Evandro Scigliano Amarante" },
+      { id: 'c2-m2', name: "Eliana Cordeiro Amarante" }
+    ] 
+  },
+  { 
+    id: 'convite-03', 
+    groupName: "Convite Individual",
+    members: [
+      { id: 'c3-m1', name: "João Silva" }
+    ] 
+  }
 ];
 
 const App = () => {
@@ -30,11 +53,17 @@ const App = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  // --- ESTADOS DO RSVP ---
+  // --- ESTADOS DO RSVP EM GRUPO ---
   const [rsvpStep, setRsvpStep] = useState('search');
   const [searchName, setSearchName] = useState('');
-  const [foundGuest, setFoundGuest] = useState(null);
-  const [rsvpForm, setRsvpForm] = useState({ attending: 'yes', message: '' });
+  const [foundGroup, setFoundGroup] = useState<{id: string, groupName: string, members: {id: string, name: string}[]} | null>(null);
+  
+  // Guarda as respostas individuais: { 'c1-m1': 'yes', 'c1-m2': 'no' }
+  const [attendance, setAttendance] = useState<Record<string, string>>({}); 
+  const [message, setMessage] = useState('');
+  
+  // Estado para controlar o loading do envio para a planilha
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // --- ESTADO DA MÚSICA ---
   const [isPlaying, setIsPlaying] = useState(false);
@@ -75,22 +104,81 @@ const App = () => {
   const handleSearchGuest = (e) => {
     e.preventDefault();
     const normalize = (str) => str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    const guest = GUEST_DATABASE.find(g => 
-      normalize(g.fullName).includes(normalize(searchName)) && searchName.length > 3
+    const searchNorm = normalize(searchName);
+    
+    // Procura se o nome digitado bate com algum membro de algum grupo
+    const group = GUEST_DATABASE.find(g => 
+      g.members.some(m => normalize(m.name).includes(searchNorm)) && searchName.length > 2
     );
-    if (guest) {
-      setFoundGuest(guest);
+
+    if (group) {
+      setFoundGroup(group);
+      // Reseta as respostas anteriores se houver
+      setAttendance({}); 
       setRsvpStep('form');
     } else {
       setRsvpStep('notFound');
     }
   };
 
-  const handleSubmitRSVP = (e) => {
+  const handleAttendanceChange = (memberId, status) => {
+    setAttendance(prev => ({ ...prev, [memberId]: status }));
+  };
+
+  const handleSubmitRSVP = async (e) => {
     e.preventDefault();
-    setTimeout(() => {
-      setRsvpStep('success');
-    }, 1000);
+    
+    // Verifica se todos os membros foram respondidos
+    if (foundGroup && Object.keys(attendance).length < foundGroup.members.length) {
+        alert("Por favor, selecione Sim ou Não para todos os convidados listados.");
+        return;
+    }
+
+    setIsSubmitting(true);
+
+    const now = new Date();
+    const dataFormatada = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
+
+    // Prepara os dados para o Google Sheets (uma linha por convidado)
+    const respostasParaPlanilha = foundGroup.members.map(member => ({
+        Data: dataFormatada,
+        Grupo: foundGroup.groupName,
+        Convidado: member.name,
+        Status: attendance[member.id] === 'yes' ? 'Confirmado' : 'Não vai',
+        Mensagem: message
+    }));
+
+    try {
+        if (SHEETDB_URL === "SUA_URL_DO_SHEETDB_AQUI") {
+            // Se ainda não colocou a URL, apenas simula o sucesso para não quebrar o site
+            setTimeout(() => {
+                setIsSubmitting(false);
+                setRsvpStep('success');
+            }, 1500);
+            return;
+        }
+
+        // Envia para o SheetDB
+        const response = await fetch(SHEETDB_URL, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ data: respostasParaPlanilha })
+        });
+
+        if (response.ok) {
+            setRsvpStep('success');
+        } else {
+            alert("Ocorreu um erro ao enviar a confirmação. Por favor, tente novamente.");
+        }
+    } catch (error) {
+        console.error("Erro na comunicação com o banco de dados:", error);
+        alert("Ocorreu um erro de conexão. Por favor, tente novamente.");
+    } finally {
+        setIsSubmitting(false);
+    }
   };
 
   // --- TELA DE BLOQUEIO (SENHA) ---
@@ -415,7 +503,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- RSVP SECTION --- */}
+      {/* --- RSVP SECTION (AGORA COM GRUPOS E SHEETDB) --- */}
       <section id="rsvp" className="py-20 px-4 relative overflow-hidden">
         <div className="max-w-2xl mx-auto text-center relative z-10">
           <h2 className="text-3xl md:text-5xl font-serif mb-4" style={{ color: colors.deepGreen }}>RSVP</h2>
@@ -428,35 +516,35 @@ const App = () => {
               <form onSubmit={handleSearchGuest} className="space-y-6">
                 <div>
                   <label className="block text-left text-sm font-semibold mb-2" style={{ color: colors.deepGreen }}>
-                    Digite seu nome completo
+                    Digite seu nome ou sobrenome
                   </label>
                   <input 
                     type="text" 
                     required
                     value={searchName}
                     onChange={(e) => setSearchName(e.target.value)}
-                    placeholder="Ex: João Silva"
-                    className="w-full p-4 border rounded-lg focus:ring-2 outline-none transition-all"
+                    placeholder="Ex: Ciro Costa"
+                    className="w-full p-4 border rounded-lg focus:ring-2 outline-none transition-all bg-[#FEFEF2]"
                     style={{ borderColor: colors.sage, color: colors.deepGreen }}
                   />
                 </div>
                 <button 
                   type="submit"
-                  className="w-full py-4 rounded-lg text-white font-bold text-lg hover:opacity-90 transition-opacity"
+                  className="w-full py-4 rounded-lg text-white font-bold tracking-widest text-lg hover:opacity-90 transition-opacity uppercase"
                   style={{ backgroundColor: colors.deepGreen }}
                 >
-                  Buscar Convite
+                  Procurar Convite
                 </button>
               </form>
             )}
 
             {/* ERROR: NOT FOUND */}
             {rsvpStep === 'notFound' && (
-              <div className="text-center animate-fadeIn">
+              <div className="text-center animate-fadeIn py-8">
                 <div className="text-[#D4865C] mb-4 text-5xl">?</div>
-                <h3 className="text-xl font-bold mb-2 text-gray-800">Nome não encontrado</h3>
+                <h3 className="text-xl font-bold mb-2 text-gray-800">Convite não localizado</h3>
                 <p className="text-gray-600 mb-6">
-                  Não encontramos este nome na lista. Tente digitar o nome completo ou o sobrenome.
+                  Não encontramos este nome na lista. Tente digitar apenas o primeiro nome ou sobrenome.
                 </p>
                 <button 
                   onClick={() => setRsvpStep('search')}
@@ -468,41 +556,46 @@ const App = () => {
               </div>
             )}
 
-            {/* STEP 2: FORM */}
-            {rsvpStep === 'form' && foundGuest && (
-              <form onSubmit={handleSubmitRSVP} className="space-y-6 text-left animate-fadeIn">
-                <div className="bg-[#FEFEF2] p-4 rounded-lg border border-[#AAB18C]">
-                  <p className="text-sm text-gray-500">Convite para:</p>
-                  <h3 className="text-xl font-serif font-bold" style={{ color: colors.deepGreen }}>{foundGuest.fullName}</h3>
-                  <p className="text-xs text-gray-400 mt-1">Válido para até {foundGuest.allowedGuests} pessoa(s)</p>
+            {/* STEP 2: FORM EM GRUPO COM SHEETDB */}
+            {rsvpStep === 'form' && foundGroup && (
+              <form onSubmit={handleSubmitRSVP} className="space-y-8 text-left animate-fadeIn">
+                <div className="border-b pb-4 border-gray-200 text-center">
+                  <p className="text-sm text-gray-500 uppercase tracking-widest mb-1">Encontramos o seu convite</p>
+                  <h3 className="text-2xl font-serif font-bold" style={{ color: colors.deepGreen }}>{foundGroup.groupName}</h3>
+                </div>
+
+                <div className="space-y-6">
+                  <p className="text-gray-700 text-sm font-semibold">Por favor, confirme a presença para cada convidado abaixo:</p>
+                  
+                  {foundGroup.members.map((member) => (
+                    <div key={member.id} className="bg-[#FEFEF2] p-4 rounded-lg border border-[#AAB18C] flex flex-col md:flex-row md:items-center justify-between gap-4">
+                      <span className="text-lg text-gray-800 font-serif font-bold">{member.name}</span>
+                      <div className="flex gap-2">
+                        <button
+                          type="button"
+                          onClick={() => handleAttendanceChange(member.id, 'yes')}
+                          className={`flex-1 md:flex-none px-6 py-2 rounded border font-bold transition-all ${attendance[member.id] === 'yes' ? 'bg-[#6E7C5A] text-white border-[#6E7C5A]' : 'bg-white text-gray-500 border-gray-300 hover:border-[#6E7C5A]'}`}
+                        >
+                          Sim
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleAttendanceChange(member.id, 'no')}
+                          className={`flex-1 md:flex-none px-6 py-2 rounded border font-bold transition-all ${attendance[member.id] === 'no' ? 'bg-[#D4865C] text-white border-[#D4865C]' : 'bg-white text-gray-500 border-gray-300 hover:border-[#D4865C]'}`}
+                        >
+                          Não
+                        </button>
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-700">Você poderá comparecer?</label>
-                  <div className="flex gap-4">
-                    <button
-                      type="button"
-                      onClick={() => setRsvpForm({...rsvpForm, attending: 'yes'})}
-                      className={`flex-1 py-3 rounded-lg border-2 font-bold transition-all ${rsvpForm.attending === 'yes' ? 'border-[#6E7C5A] bg-[#6E7C5A] text-white' : 'border-gray-200 text-gray-400'}`}
-                    >
-                      Sim, eu vou!
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setRsvpForm({...rsvpForm, attending: 'no'})}
-                      className={`flex-1 py-3 rounded-lg border-2 font-bold transition-all ${rsvpForm.attending === 'no' ? 'border-[#D4865C] bg-[#D4865C] text-white' : 'border-gray-200 text-gray-400'}`}
-                    >
-                      Não poderei ir
-                    </button>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-700">Deixe uma mensagem para os noivos</label>
+                  <label className="block text-sm font-semibold mb-2 text-gray-700">Deixe uma mensagem para os noivos (Opcional)</label>
                   <textarea 
                     rows={3}
-                    value={rsvpForm.message}
-                    onChange={(e) => setRsvpForm({...rsvpForm, message: e.target.value})}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     className="w-full p-3 border rounded-lg focus:ring-1 focus:ring-[#AAB18C] outline-none"
                     placeholder="Escreva algo especial..."
                   ></textarea>
@@ -510,26 +603,49 @@ const App = () => {
 
                 <button 
                   type="submit"
-                  className="w-full py-4 rounded-lg text-white font-bold text-lg hover:opacity-90 transition-opacity"
+                  disabled={isSubmitting}
+                  className={`w-full py-4 rounded-lg text-white font-bold tracking-widest text-lg uppercase flex items-center justify-center transition-opacity ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:opacity-90'}`}
                   style={{ backgroundColor: colors.deepGreen }}
                 >
-                  Confirmar Resposta
+                  {isSubmitting ? (
+                    <>
+                      <Loader className="animate-spin mr-2" size={24} />
+                      Enviando...
+                    </>
+                  ) : (
+                    "Enviar Confirmação"
+                  )}
                 </button>
               </form>
             )}
 
-            {/* STEP 3: SUCCESS */}
+            {/* STEP 3: SUCCESS (COM BOTÃO DE PRESENTES) */}
             {rsvpStep === 'success' && (
-              <div className="text-center py-8 animate-fadeIn">
+              <div className="text-center py-8 animate-fadeIn flex flex-col items-center">
                 <div className="w-16 h-16 bg-[#AAB18C] rounded-full flex items-center justify-center mx-auto mb-4">
                   <Check className="text-white w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-serif font-bold mb-2" style={{ color: colors.deepGreen }}>Obrigado!</h3>
-                <p className="text-gray-600">
-                  {rsvpForm.attending === 'yes' 
-                    ? 'Sua presença foi confirmada.' 
-                    : 'Que pena que não poderá ir.'}
+                <h3 className="text-2xl font-serif font-bold mb-2" style={{ color: colors.deepGreen }}>Muito Obrigado!</h3>
+                <p className="text-gray-600 mb-8 max-w-sm mx-auto">
+                  Sua confirmação foi registrada com sucesso. Mal podemos esperar para celebrar com você!
                 </p>
+
+                {/* BOTÃO PARA LISTA DE PRESENTES */}
+                <div className="bg-[#FEFEF2] p-6 rounded-lg border border-[#EBDDD3] w-full">
+                  <p className="text-gray-600 text-sm mb-4 font-semibold">
+                    Já que está aqui, que tal dar uma olhada na nossa lista de presentes?
+                  </p>
+                  <button 
+                    onClick={() => {
+                      scrollTo('registry');
+                    }}
+                    className="w-full py-3 rounded text-white font-bold tracking-widest text-sm hover:opacity-90 transition-all uppercase flex items-center justify-center gap-2"
+                    style={{ backgroundColor: colors.terracotta }}
+                  >
+                    <Gift size={18} />
+                    Ver Lista de Presentes
+                  </button>
+                </div>
               </div>
             )}
 
