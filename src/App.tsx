@@ -1377,7 +1377,7 @@ const App = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer" onClick={() => scrollTo('home')}>
-              <span className="text-2xl font-serif tracking-widest text-[#6E7C5A]">R & M</span>
+              <img src="/monograma.png" alt="Monograma" className="h-12 object-contain mix-blend-multiply" />
             </div>
             
             {/* Desktop Menu */}
@@ -1431,16 +1431,19 @@ const App = () => {
 
       {/* --- HERO SECTION --- */}
       <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Decorative Circles */}
-        <div className="absolute top-20 left-10 w-64 h-64 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob" style={{ backgroundColor: colors.sage }}></div>
-        <div className="absolute top-20 right-10 w-64 h-64 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000" style={{ backgroundColor: colors.gold }}></div>
-        <div className="absolute -bottom-8 left-20 w-64 h-64 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000" style={{ backgroundColor: colors.softRed }}></div>
+        {/* Fundo Aquarela Botânico */}
+        <div 
+          className="absolute inset-0 z-0 opacity-50 mix-blend-multiply filter blur-[3px]" 
+          style={{ backgroundImage: "url('/aquarela_botanico.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
+        ></div>
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#FEFEF2]/40 via-transparent to-[#FEFEF2]"></div>
 
-        <div className="relative z-10 text-center px-4">
-          <p className="text-lg md:text-xl uppercase tracking-[0.2em] mb-4" style={{ color: colors.terracotta }}>Vamos nos casar</p>
-          <h1 className="text-5xl md:text-8xl font-serif mb-6" style={{ color: colors.deepGreen }}>
-            Rodrigo & Milla
-          </h1>
+        <div className="relative z-10 text-center px-4 mt-16">
+          <img src="/bicicleta_casal.png" alt="Bicicleta" className="h-16 md:h-24 mx-auto mb-4 object-contain mix-blend-multiply" />
+          <p className="text-lg md:text-xl uppercase tracking-[0.2em] mb-4 font-bold" style={{ color: colors.terracotta }}>Vamos nos casar</p>
+          
+          <img src="/assinatura.png" alt="Rodrigo e Milla" className="h-24 md:h-40 mx-auto mb-6 object-contain mix-blend-multiply drop-shadow-sm" />
+          
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-lg md:text-2xl font-light" style={{ color: colors.deepGreen }}>
             <span className="flex items-center gap-2"><Calendar size={20} /> 18 de Outubro de 2026</span>
             <span className="hidden md:inline">|</span>
@@ -1469,12 +1472,10 @@ const App = () => {
             Construindo nossos sonhos, tijolo por tijolo, e agora celebrando a fundação mais importante de todas: nossa família. 
             O Botânico Quintal reflete a leveza que queremos para nossa vida a dois.
           </p>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4">
-             {[1, 2, 3].map((i) => (
-               <div key={i} className="aspect-[3/4] rounded-t-full bg-[#EBDDD3] relative overflow-hidden group">
-                 <div className="absolute inset-0 flex items-center justify-center text-[#6E7C5A] opacity-30">
-                   <Camera size={32} />
-                 </div>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+             {['/casal1.PNG', '/casal2.PNG', '/casal3.PNG'].map((src, i) => (
+               <div key={i} className={`aspect-[3/4] rounded-t-full bg-[#EBDDD3] relative overflow-hidden shadow-lg border-2 border-[#EBDDD3] group ${i === 1 ? 'md:-translate-y-6' : ''}`}>
+                 <img src={src} alt={`Casal ${i + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-500"></div>
                </div>
              ))}
@@ -1810,8 +1811,8 @@ const App = () => {
       </section>
 
       {/* --- FOOTER --- */}
-      <footer className="py-12 text-center text-white" style={{ backgroundColor: colors.deepGreen }}>
-        <h2 className="text-3xl font-serif mb-4">Rodrigo & Milla</h2>
+      <footer className="py-12 text-center text-white flex flex-col items-center" style={{ backgroundColor: colors.deepGreen }}>
+        <img src="/monograma.png" alt="Monograma" className="h-16 mb-4 object-contain brightness-0 invert opacity-90" />
         <p className="mb-8 opacity-80">18 . 10 . 2026</p>
         <div className="text-sm opacity-60">
           <p>Feito com amor • São Paulo, Brasil</p>
