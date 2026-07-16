@@ -1741,21 +1741,37 @@ const App = () => {
                   ></textarea>
                 </div>
 
-                <button 
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full py-4 rounded-lg text-white font-bold tracking-widest text-lg uppercase flex items-center justify-center transition-opacity ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:opacity-90'}`}
-                  style={{ backgroundColor: colors.deepGreen }}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader className="animate-spin mr-2" size={24} />
-                      Enviando...
-                    </>
-                  ) : (
-                    "Enviar Confirmação"
-                  )}
-                </button>
+                <div className="flex flex-col gap-3 mt-2">
+                  <button 
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`w-full py-4 rounded-lg text-white font-bold tracking-widest text-lg uppercase flex items-center justify-center transition-opacity ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:opacity-90'}`}
+                    style={{ backgroundColor: colors.deepGreen }}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader className="animate-spin mr-2" size={24} />
+                        Enviando...
+                      </>
+                    ) : (
+                      "Enviar Confirmação"
+                    )}
+                  </button>
+
+                  <button 
+                    type="button"
+                    disabled={isSubmitting}
+                    onClick={() => {
+                      setSearchName('');
+                      setFoundGroup(null);
+                      setRsvpStep('search');
+                    }}
+                    className="w-full py-3 rounded-lg font-bold tracking-widest text-sm uppercase transition-colors border-2 bg-transparent hover:bg-gray-50"
+                    style={{ color: colors.deepGreen, borderColor: colors.deepGreen }}
+                  >
+                    Não é o seu convite? Voltar
+                  </button>
+                </div>
               </form>
             )}
 
