@@ -1679,16 +1679,19 @@ const App = () => {
             {rsvpStep === 'notFound' && (
               <div className="text-center animate-fadeIn py-8">
                 <div className="text-[#D4865C] mb-4 text-5xl">?</div>
-                <h3 className="text-xl font-bold mb-2 text-gray-800">Convite não localizado</h3>
+                <h3 className="text-xl font-bold mb-2 text-gray-800">Convite não localizado</h3>
                 <p className="text-gray-600 mb-6">
-                  Não encontramos este nome na lista. Tente digitar apenas o primeiro nome ou sobrenome.
+                  Não encontramos este nome na lista. Tente digitar apenas o primeiro nome ou sobrenome.
                 </p>
                 <button 
-                  onClick={() => setRsvpStep('search')}
-                  className="text-sm underline font-bold"
-                  style={{ color: colors.deepGreen }}
+                  onClick={() => {
+                    setSearchName(''); // Limpa o campo de busca anterior
+                    setRsvpStep('search');
+                  }}
+                  className="w-full py-4 rounded-lg text-white font-bold tracking-widest text-lg hover:opacity-90 transition-opacity uppercase"
+                  style={{ backgroundColor: colors.terracotta }}
                 >
-                  Tentar novamente
+                  Procure novamente
                 </button>
               </div>
             )}
