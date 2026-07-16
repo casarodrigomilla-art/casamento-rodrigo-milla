@@ -1323,7 +1323,7 @@ const App = () => {
     return (
       <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: colors.cream }}>
         <div className="max-w-md w-full bg-white p-8 rounded-xl shadow-2xl text-center border-t-4" style={{ borderColor: colors.deepGreen }}>
-          <Lock className="w-12 h-12 mx-auto mb-4" style={{ color: colors.sage }} />
+          <img src="/bicicleta_casal.png" alt="Bicicleta" className="h-16 mx-auto mb-4 object-contain mix-blend-multiply" />
           <h1 className="text-3xl font-serif mb-2" style={{ color: colors.deepGreen }}>Rodrigo & Milla</h1>
           <p className="text-gray-500 mb-8">Área restrita aos convidados. Por favor, digite a senha do convite.</p>
           
