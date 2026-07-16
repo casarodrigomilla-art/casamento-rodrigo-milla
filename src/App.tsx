@@ -8,7 +8,7 @@ const colors = {
   palePink: '#EBDDD3',
   softRed: '#E1A0A0',
   sage: '#AAB18C',
-  deepGreen: '#6E7C5A',
+  deepGreen: '#79784E',
   terracotta: '#D4865C',
   paleSage: '#CCCDB6',
 };
