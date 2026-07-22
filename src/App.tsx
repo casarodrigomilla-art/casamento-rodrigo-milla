@@ -1684,6 +1684,7 @@ const App = () => {
               </div>
             </details>
           </div>
+        </div>
       </section>
 
       {/* --- RSVP SECTION (AGORA COM GRUPOS E SHEETDB) --- */}
