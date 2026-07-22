@@ -1560,32 +1560,26 @@ const App = () => {
       </section>
 
       {/* --- DRESS CODE / TRAJE --- */}
-      <section id="dresscode" className="py-16 px-4 bg-[#F9F9F4]">
+      <section id="dresscode" className="py-20 px-4 bg-[#F9F9F4]">
         <div className="max-w-4xl mx-auto text-center">
           <Shirt className="w-10 h-10 mx-auto mb-4" style={{ color: colors.deepGreen }} />
-          <h2 className="text-3xl md:text-5xl font-serif mb-8" style={{ color: colors.deepGreen }}>Dress Code</h2>
-          <p className="text-lg text-gray-700 mb-8">
-            Para celebrarmos com elegância e conforto, o traje sugerido é <strong className="uppercase">Social Completo</strong>.
-          </p>
-
-          <div className="flex flex-col md:flex-row gap-8 justify-center items-stretch">
-             {/* Card Mulheres */}
-             <div className="flex-1 bg-white p-6 rounded-lg shadow-sm border border-[#EBDDD3]">
-               <h3 className="font-serif text-xl mb-4" style={{ color: colors.terracotta }}>Para Elas</h3>
-               <p className="text-gray-600 text-sm mb-4">Vestidos longos ou midi em tecidos fluidos. Apostem em tons pastéis ou vibrantes. Evitem o branco e off-white.</p>
-               <div className="h-48 bg-[#FEFEF2] rounded border border-dashed border-[#AAB18C] flex items-center justify-center">
-                 <span className="text-xs text-gray-400 italic">Croqui / Inspiração Vestido</span>
-               </div>
-             </div>
-             
-             {/* Card Homens */}
-             <div className="flex-1 bg-white p-6 rounded-lg shadow-sm border border-[#EBDDD3]">
-               <h3 className="font-serif text-xl mb-4" style={{ color: colors.deepGreen }}>Para Eles</h3>
-               <p className="text-gray-600 text-sm mb-4">Terno completo e gravata. Cores como azul marinho, cinza grafite ou preto são perfeitas para a ocasião.</p>
-               <div className="h-48 bg-[#FEFEF2] rounded border border-dashed border-[#AAB18C] flex items-center justify-center">
-                  <span className="text-xs text-gray-400 italic">Croqui / Inspiração Terno</span>
-               </div>
-             </div>
+          <h2 className="text-3xl md:text-5xl font-serif mb-10" style={{ color: colors.deepGreen }}>Dress Code</h2>
+          
+          <div className="max-w-2xl mx-auto flex flex-col items-center">
+            {/* CROQUI CENTRALIZADO */}
+            <img 
+              src="/image_27eaa6.jpg" 
+              alt="Ilustração do Dress Code" 
+              className="w-full max-w-lg mb-8 object-contain drop-shadow-sm"
+              style={{ mixBlendMode: 'multiply' }} 
+            />
+            
+            {/* TEXTO MINIMALISTA */}
+            <p className="text-lg md:text-xl text-gray-700 font-light leading-relaxed">
+              <strong className="font-bold text-gray-900">Traje social completo.</strong><br />
+              Para elas, vestidos midi ou longos.<br />
+              Para eles, terno e gravata.
+            </p>
           </div>
         </div>
       </section>
