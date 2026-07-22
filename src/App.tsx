@@ -1568,7 +1568,7 @@ const App = () => {
           <div className="max-w-2xl mx-auto flex flex-col items-center">
             {/* CROQUI CENTRALIZADO */}
             <img 
-              src="/image_27eaa6.jpg" 
+              src="/dress_code.png" 
               alt="Ilustração do Dress Code" 
               className="w-full max-w-lg mb-8 object-contain drop-shadow-sm"
               style={{ mixBlendMode: 'multiply' }} 
