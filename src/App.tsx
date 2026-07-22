@@ -1639,7 +1639,7 @@ const App = () => {
               você pode usar a chave PIX abaixo.
             </p>
             
-            <div className="w-full">
+            <div className="w-full mb-6">
               <p className="text-[10px] uppercase text-gray-400 font-bold mb-1">Chave Pix (E-mail ou CPF)</p>
               <div className="flex flex-col md:flex-row items-center justify-between bg-white p-2 md:pl-4 rounded-lg border border-gray-200 w-full gap-2">
                 <code className="text-[#6E7C5A] font-mono font-bold text-sm select-all">rodrigoemilla@casamento.com</code>
@@ -1654,8 +1654,36 @@ const App = () => {
               </div>
               <p className="text-[10px] text-gray-400 mt-3 uppercase tracking-widest">Banco: Nubank | Titular: Rodrigo Toniolo</p>
             </div>
+
+            {/* EXPANSÍVEL: IDEIAS DE PRESENTES (PRIORIDADE 7) */}
+            <details className="w-full group">
+              <summary className="cursor-pointer list-none flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wider py-3 border-t border-gray-200 text-gray-500 hover:text-[#D4865C] transition-colors outline-none">
+                Ver ideias de presentes
+                {/* A seta gira automaticamente quando o painel abre usando Tailwind */}
+                <span className="transition duration-300 group-open:-rotate-180 text-xs">
+                  ▼
+                </span>
+              </summary>
+              
+              {/* LISTA DE PRESENTES ANIMADA */}
+              <div className="mt-4 grid grid-cols-1 gap-3 text-left animate-fade-in-down">
+                {[
+                  { icon: '🥂', title: 'Brinde de Lua de Mel', price: 'R$ 150,00' },
+                  { icon: '🍝', title: 'Jantar Romântico', price: 'R$ 250,00' },
+                  { icon: '💆‍♀️', title: 'Spa para o Casal', price: 'R$ 400,00' },
+                  { icon: '✈️', title: 'Cota de Passagem Aérea', price: 'R$ 500,00' }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center justify-between bg-white p-4 rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="flex items-center gap-3">
+                      <span className="text-2xl">{item.icon}</span>
+                      <span className="text-sm font-medium text-gray-700">{item.title}</span>
+                    </div>
+                    <span className="text-sm font-bold" style={{ color: colors.deepGreen }}>{item.price}</span>
+                  </div>
+                ))}
+              </div>
+            </details>
           </div>
-        </div>
       </section>
 
       {/* --- RSVP SECTION (AGORA COM GRUPOS E SHEETDB) --- */}
