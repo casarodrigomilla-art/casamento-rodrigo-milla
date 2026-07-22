@@ -1563,23 +1563,35 @@ const App = () => {
       <section id="dresscode" className="py-20 px-4 bg-[#F9F9F4]">
         <div className="max-w-4xl mx-auto text-center">
           <Shirt className="w-10 h-10 mx-auto mb-4" style={{ color: colors.deepGreen }} />
-          <h2 className="text-3xl md:text-5xl font-serif mb-10" style={{ color: colors.deepGreen }}>Dress Code</h2>
+          <h2 className="text-3xl md:text-5xl font-serif mb-12" style={{ color: colors.deepGreen }}>Dress Code</h2>
           
           <div className="max-w-2xl mx-auto flex flex-col items-center">
-            {/* CROQUI CENTRALIZADO */}
-            <img 
-              src="/dress_code.png" 
-              alt="Ilustração do Dress Code" 
-              className="w-full max-w-lg mb-8 object-contain drop-shadow-sm"
-              style={{ mixBlendMode: 'multiply' }} 
-            />
             
-            {/* TEXTO MINIMALISTA */}
-            <p className="text-lg md:text-xl text-gray-700 font-light leading-relaxed">
-              <strong className="font-bold text-gray-900">Traje social completo.</strong><br />
+            {/* MOLDURA ELEGANTE PARA A IMAGEM */}
+            <div className="relative p-3 bg-white rounded-2xl shadow-lg mb-10 border border-[#CCCDB6] transform transition-transform hover:scale-[1.02]">
+              <img 
+                src="/dress_code.png" 
+                alt="Ilustração do Dress Code" 
+                className="w-full max-w-lg rounded-xl object-cover"
+              />
+            </div>
+            
+            {/* TEXTO EDITORIAL E ACOLHEDOR */}
+            <h3 className="font-serif text-2xl mb-4" style={{ color: colors.deepGreen }}>
+              Traje Social Completo
+            </h3>
+            
+            <p className="text-lg text-gray-600 font-light leading-relaxed">
               Para elas, vestidos midi ou longos.<br />
               Para eles, terno e gravata.
             </p>
+            
+            <div className="w-12 h-[1px] bg-[#D4865C] mx-auto mt-6 mb-4 opacity-50"></div>
+            
+            <p className="text-sm font-serif italic text-gray-500">
+              Queremos que se sintam lindos e confortáveis para celebrar e dançar muito conosco!
+            </p>
+
           </div>
         </div>
       </section>
