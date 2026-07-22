@@ -1439,7 +1439,7 @@ const App = () => {
         {/* Fundo Aquarela Botânico */}
         <div 
           className="absolute inset-0 z-0 opacity-50 filter blur-[3px]" 
-          style={{ backgroundImage: "url('/aquarela_botanico.png')", backgroundSize: 'cover', backgroundPosition: '50% center', mixBlendMode: 'multiply' }}
+          style={{ backgroundImage: "url('/aquarela_botanico_2.png')", backgroundSize: 'cover', backgroundPosition: 'center', mixBlendMode: 'multiply' }}
         ></div>
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#FEFEF2]/40 via-transparent to-[#FEFEF2]"></div>
 
