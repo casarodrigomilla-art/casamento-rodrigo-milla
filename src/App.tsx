@@ -1444,7 +1444,7 @@ const App = () => {
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#FEFEF2]/40 via-transparent to-[#FEFEF2]"></div>
 
         <div className="relative z-10 text-center px-4 mt-16">
-          <p className="text-lg md:text-xl uppercase tracking-[0.2em] mb-4 font-bold" style={{ color: colors.terracotta }}>Vamos nos casar</p>
+          <p className="text-lg md:text-xl uppercase tracking-[0.2em] mb-12 font-bold" style={{ color: colors.terracotta }}>Vamos nos casar</p>
           
           <img 
             src="/assinatura.png" 
@@ -1471,17 +1471,27 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- STORY / INTRO --- */}
-      <section id="story" className="py-20 md:py-32 px-4">
+      {/* --- OUR STORY / NOSSA HISTÓRIA --- */}
+      <section id="story" className="py-20 px-4 bg-[#FEFEF2]">
         <div className="max-w-4xl mx-auto text-center">
-          <Heart className="w-10 h-10 mx-auto mb-6" style={{ color: colors.terracotta }} />
-          <h2 className="text-3xl md:text-5xl font-serif mb-8" style={{ color: colors.deepGreen }}>Nossa História</h2>
-          <p className="text-lg md:text-xl leading-relaxed opacity-80" style={{ color: colors.deepGreen }}>
-            Milla Cordeiro Amarante & Rodrigo Pereira Toniolo.<br/>
-            Não há nada mais forte e especial do que celebrar o amor ao lado das pessoas que mais amamos.<br/>
-            Será em um domingo, no dia 18 de outubro de 2026, que celebraremos o nosso casamento e o início da nossa família. E não haveria forma melhor de viver esse momento do que cercados por pessoas que fizeram, e continuam fazendo, parte da nossa história.<br/>
-            Será uma imensa alegria compartilhar esse dia tão esperado com vocês e criar memórias que levaremos para a vida toda. Tragam seu amor, carinho, sorrisos, sua boa energia e toda a animação para celebrar conosco.
-          </p>
+          <Heart className="w-10 h-10 mx-auto mb-4" style={{ color: colors.terracotta }} />
+          <h2 className="text-3xl md:text-5xl font-serif mb-10" style={{ color: colors.deepGreen }}>Nossa História</h2>
+          
+          {/* BLOCO DE TEXTO COM MAIS RESPIRO */}
+          <div className="max-w-3xl mx-auto text-center text-lg text-gray-700 font-light leading-relaxed space-y-6 mb-16">
+            <p className="font-serif italic text-xl md:text-2xl mb-8" style={{ color: colors.deepGreen }}>
+              Milla Cordeiro Amarante & Rodrigo Pereira Toniolo
+            </p>
+            <p>
+              Não há nada mais forte e especial do que celebrar o amor ao lado das pessoas que mais amamos. 
+              Será em um domingo, no dia 18 de outubro de 2026, que celebraremos o nosso casamento e o início da nossa família. 
+              E não haveria forma melhor de viver esse momento do que cercados por pessoas que fizeram, e continuam fazendo, parte da nossa história.
+            </p>
+            <p>
+              Será uma imensa alegria compartilhar esse dia tão esperado com vocês e criar memórias que levaremos para a vida toda. 
+              Tragam seu amor, carinho, sorrisos, sua boa energia e toda a animação para celebrar conosco.
+            </p>
+          </div>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
              {['/casal1.PNG', '/casal2.PNG', '/casal3.PNG'].map((src, i) => (
                <div key={i} className={`aspect-[3/4] rounded-t-full bg-[#EBDDD3] relative overflow-hidden shadow-lg border-2 border-[#EBDDD3] group ${i === 1 ? 'md:-translate-y-6' : ''}`}>
