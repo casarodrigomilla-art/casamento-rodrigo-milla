@@ -1326,10 +1326,10 @@ const App = () => {
           <img 
             src="/bicicleta_casal_2.png" 
             alt="Bicicleta" 
-            className="h-32 md:h-48 mx-auto mb-6 object-contain" 
+            className="h-28 md:h-36 mx-auto mb-6 object-contain" 
             style={{ mixBlendMode: 'multiply' }} 
           />
-          <h1 className="text-3xl font-serif mb-2" style={{ color: colors.deepGreen }}>Rodrigo & Milla</h1>
+          <h1 className="text-3xl font-serif mb-2" style={{ color: colors.deepGreen }}>Milla & Rodrigo</h1>
           <p className="text-gray-500 mb-8">Área restrita aos convidados. Por favor, digite a senha do convite.</p>
           
           <form onSubmit={handleLogin} className="space-y-4">
@@ -1439,22 +1439,16 @@ const App = () => {
         {/* Fundo Aquarela Botânico */}
         <div 
           className="absolute inset-0 z-0 opacity-50 filter blur-[3px]" 
-          style={{ backgroundImage: "url('/aquarela_botanico.png')", backgroundSize: 'cover', backgroundPosition: '30% center', mixBlendMode: 'multiply' }}
+          style={{ backgroundImage: "url('/aquarela_botanico.png')", backgroundSize: 'cover', backgroundPosition: '50% center', mixBlendMode: 'multiply' }}
         ></div>
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#FEFEF2]/40 via-transparent to-[#FEFEF2]"></div>
 
         <div className="relative z-10 text-center px-4 mt-16">
-          <img 
-            src="/bicicleta_casal_2.png" 
-            alt="Bicicleta" 
-            className="h-32 md:h-48 mx-auto mb-6 object-contain" 
-            style={{ mixBlendMode: 'multiply' }} 
-          />
           <p className="text-lg md:text-xl uppercase tracking-[0.2em] mb-4 font-bold" style={{ color: colors.terracotta }}>Vamos nos casar</p>
           
           <img 
             src="/assinatura.png" 
-            alt="Rodrigo e Milla" 
+            alt="Milla & Rodrigo" 
             className="h-24 md:h-40 mx-auto mb-6 object-contain drop-shadow-sm" 
             style={{ mixBlendMode: 'multiply' }} 
           />
@@ -1483,9 +1477,10 @@ const App = () => {
           <Heart className="w-10 h-10 mx-auto mb-6" style={{ color: colors.terracotta }} />
           <h2 className="text-3xl md:text-5xl font-serif mb-8" style={{ color: colors.deepGreen }}>Nossa História</h2>
           <p className="text-lg md:text-xl leading-relaxed opacity-80" style={{ color: colors.deepGreen }}>
-            Rodrigo Pereira Toniolo & Milla Cordeiro Amarante.<br/>
-            Construindo nossos sonhos, tijolo por tijolo, e agora celebrando a fundação mais importante de todas: nossa família. 
-            O Botânico Quintal reflete a leveza que queremos para nossa vida a dois.
+            Milla Cordeiro Amarante & Rodrigo Pereira Toniolo.<br/>
+            Não há nada mais forte e especial do que celebrar o amor ao lado das pessoas que mais amamos.<br/>
+            Será em um domingo, no dia 18 de outubro de 2026, que celebraremos o nosso casamento e o início da nossa família. E não haveria forma melhor de viver esse momento do que cercados por pessoas que fizeram, e continuam fazendo, parte da nossa história.<br/>
+            Será uma imensa alegria compartilhar esse dia tão esperado com vocês e criar memórias que levaremos para a vida toda. Tragam seu amor, carinho, sorrisos, sua boa energia e toda a animação para celebrar conosco.
           </p>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
              {['/casal1.PNG', '/casal2.PNG', '/casal3.PNG'].map((src, i) => (
@@ -1591,7 +1586,7 @@ const App = () => {
           <Gift className="w-10 h-10 mx-auto mb-4" style={{ color: colors.deepGreen }} />
           <h2 className="text-3xl md:text-5xl font-serif mb-8" style={{ color: colors.deepGreen }}>Lista de Presentes</h2>
           
-          <div className="bg-white p-8 rounded-xl shadow-lg mb-10 mx-auto max-w-3xl">
+          <div className="bg-white p-8 rounded-xl shadow-lg mb-12 mx-auto max-w-3xl">
             <p className="text-lg md:text-xl leading-relaxed text-gray-700 italic font-serif">
               "Estamos muito felizes em compartilhar esse momento com vocês! 
               Como já estamos montando nosso primeiro lar juntos, optamos por uma lista de presentes 'à moda antiga' e também opções virtuais.
@@ -1599,53 +1594,55 @@ const App = () => {
             </p>
           </div>
 
-          {/* LOJAS */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {/* LOJAS (MAIOR DESTAQUE) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             {[
-              { name: 'Camicado', url: '#', color: '#fff' },
-              { name: 'Mickey Presentes', url: '#', color: '#fff' },
-              { name: 'Fast Shop', url: '#', color: '#fff' }
+              { name: 'Camicado', url: '#' },
+              { name: 'Mickey Presentes', url: '#' },
+              { name: 'Fast Shop', url: '#' }
             ].map((store, i) => (
               <a 
                 key={i} 
                 href={store.url}
                 target="_blank"
                 rel="noreferrer"
-                className="group p-6 bg-white rounded-lg shadow hover:shadow-lg transition-all flex flex-col items-center justify-center gap-2"
+                className="group p-8 bg-white rounded-xl shadow-md hover:shadow-xl transition-all flex flex-col items-center justify-center gap-4 border-b-4 transform hover:-translate-y-1"
+                style={{ borderColor: colors.deepGreen }}
               >
-                <Gift size={24} style={{ color: colors.terracotta }} />
-                <h3 className="font-bold uppercase text-gray-700">{store.name}</h3>
-                <span className="text-xs text-[#D4865C]">Ver lista</span>
+                <Gift size={32} style={{ color: colors.terracotta }} />
+                <h3 className="font-serif font-bold text-2xl text-gray-800 tracking-wide">{store.name}</h3>
+                <span 
+                  className="mt-2 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-white transition-opacity group-hover:opacity-90" 
+                  style={{ backgroundColor: colors.terracotta }}
+                >
+                  Ver lista
+                </span>
               </a>
             ))}
           </div>
 
-          {/* ÁREA PIX */}
-          <div className="max-w-2xl mx-auto bg-white p-8 rounded-xl border-2 border-dashed relative overflow-hidden" style={{ borderColor: colors.gold }}>
-            <div className="absolute top-0 left-0 bg-[#F1CF95] text-[#6E7C5A] text-xs font-bold px-3 py-1 rounded-br-lg">
-              OPÇÃO PRÁTICA
-            </div>
-            <h3 className="text-2xl font-serif mb-4" style={{ color: colors.deepGreen }}>Presente via PIX</h3>
+          {/* ÁREA PIX (MENOR DESTAQUE, DISCRETA E ELEGANTE) */}
+          <div className="max-w-md mx-auto bg-white/60 backdrop-blur-sm p-8 rounded-xl border border-[#CCCDB6] flex flex-col items-center text-center shadow-sm">
+            <h3 className="text-xl font-serif mb-2" style={{ color: colors.deepGreen }}>Opção PIX</h3>
             <p className="text-gray-600 mb-6 text-sm">
               Se preferir contribuir de forma prática para a nossa lua de mel e montagem da casa, 
               você pode usar a chave PIX abaixo.
             </p>
             
-            <div className="flex flex-col items-center justify-center">
-              <div className="text-center w-full md:w-auto">
-                <p className="text-xs uppercase text-gray-400 font-bold mb-1">Chave Pix (E-mail ou CPF)</p>
-                <div className="flex items-center justify-center gap-2 bg-gray-50 p-3 rounded border border-gray-200">
-                  <code className="text-[#6E7C5A] font-mono select-all">rodrigoemilla@casamento.com</code>
-                  <button 
-                    onClick={() => navigator.clipboard.writeText('rodrigoemilla@casamento.com')}
-                    className="p-2 hover:bg-gray-200 rounded transition-colors"
-                    title="Copiar chave"
-                  >
-                    <Copy size={16} className="text-gray-600" />
-                  </button>
-                </div>
-                <p className="text-xs text-gray-400 mt-2">Banco: Nubank | Titular: Rodrigo Toniolo</p>
+            <div className="w-full">
+              <p className="text-[10px] uppercase text-gray-400 font-bold mb-1">Chave Pix (E-mail ou CPF)</p>
+              <div className="flex flex-col md:flex-row items-center justify-between bg-white p-2 md:pl-4 rounded-lg border border-gray-200 w-full gap-2">
+                <code className="text-[#6E7C5A] font-mono font-bold text-sm select-all">rodrigoemilla@casamento.com</code>
+                <button 
+                  onClick={() => navigator.clipboard.writeText('rodrigoemilla@casamento.com')}
+                  className="w-full md:w-auto px-4 py-2 hover:bg-[#EBDDD3] rounded-md transition-colors flex items-center justify-center gap-2 text-sm font-bold border border-transparent hover:border-[#D4865C]"
+                  style={{ color: colors.terracotta }}
+                  title="Copiar chave"
+                >
+                  <Copy size={16} /> Copiar
+                </button>
               </div>
+              <p className="text-[10px] text-gray-400 mt-3 uppercase tracking-widest">Banco: Nubank | Titular: Rodrigo Toniolo</p>
             </div>
           </div>
         </div>
