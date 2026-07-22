@@ -1324,7 +1324,7 @@ const App = () => {
       <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: colors.cream }}>
         <div className="max-w-md w-full bg-white p-8 rounded-xl shadow-2xl text-center border-t-4" style={{ borderColor: colors.deepGreen }}>
           <img 
-            src="/bicicleta_casal.png" 
+            src="/bicicleta_casal_2.png" 
             alt="Bicicleta" 
             className="h-32 md:h-48 mx-auto mb-6 object-contain" 
             style={{ mixBlendMode: 'multiply' }} 
@@ -1445,7 +1445,7 @@ const App = () => {
 
         <div className="relative z-10 text-center px-4 mt-16">
           <img 
-            src="/bicicleta_casal.png" 
+            src="/bicicleta_casal_2.png" 
             alt="Bicicleta" 
             className="h-32 md:h-48 mx-auto mb-6 object-contain" 
             style={{ mixBlendMode: 'multiply' }} 
