@@ -1323,7 +1323,12 @@ const App = () => {
     return (
       <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: colors.cream }}>
         <div className="max-w-md w-full bg-white p-8 rounded-xl shadow-2xl text-center border-t-4" style={{ borderColor: colors.deepGreen }}>
-          <img src="/bicicleta_casal.png" alt="Bicicleta" className="h-16 mx-auto mb-4 object-contain mix-blend-multiply" />
+          <img 
+            src="/bicicleta_casal.png" 
+            alt="Bicicleta" 
+            className="h-32 md:h-48 mx-auto mb-6 object-contain" 
+            style={{ mixBlendMode: 'multiply' }} 
+          />
           <h1 className="text-3xl font-serif mb-2" style={{ color: colors.deepGreen }}>Rodrigo & Milla</h1>
           <p className="text-gray-500 mb-8">Área restrita aos convidados. Por favor, digite a senha do convite.</p>
           
@@ -1433,16 +1438,26 @@ const App = () => {
       <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Fundo Aquarela Botânico */}
         <div 
-          className="absolute inset-0 z-0 opacity-50 mix-blend-multiply filter blur-[3px]" 
-          style={{ backgroundImage: "url('/aquarela_botanico.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
+          className="absolute inset-0 z-0 opacity-50 filter blur-[3px]" 
+          style={{ backgroundImage: "url('/aquarela_botanico.png')", backgroundSize: 'cover', backgroundPosition: '30% center', mixBlendMode: 'multiply' }}
         ></div>
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#FEFEF2]/40 via-transparent to-[#FEFEF2]"></div>
 
         <div className="relative z-10 text-center px-4 mt-16">
-          <img src="/bicicleta_casal.png" alt="Bicicleta" className="h-16 md:h-24 mx-auto mb-4 object-contain mix-blend-multiply" />
+          <img 
+            src="/bicicleta_casal.png" 
+            alt="Bicicleta" 
+            className="h-32 md:h-48 mx-auto mb-6 object-contain" 
+            style={{ mixBlendMode: 'multiply' }} 
+          />
           <p className="text-lg md:text-xl uppercase tracking-[0.2em] mb-4 font-bold" style={{ color: colors.terracotta }}>Vamos nos casar</p>
           
-          <img src="/assinatura.png" alt="Rodrigo e Milla" className="h-24 md:h-40 mx-auto mb-6 object-contain mix-blend-multiply drop-shadow-sm" />
+          <img 
+            src="/assinatura.png" 
+            alt="Rodrigo e Milla" 
+            className="h-24 md:h-40 mx-auto mb-6 object-contain drop-shadow-sm" 
+            style={{ mixBlendMode: 'multiply' }} 
+          />
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-lg md:text-2xl font-light" style={{ color: colors.deepGreen }}>
             <span className="flex items-center gap-2"><Calendar size={20} /> 18 de Outubro de 2026</span>
@@ -1543,7 +1558,7 @@ const App = () => {
       <section id="dresscode" className="py-16 px-4 bg-[#F9F9F4]">
         <div className="max-w-4xl mx-auto text-center">
           <Shirt className="w-10 h-10 mx-auto mb-4" style={{ color: colors.deepGreen }} />
-          <h2 className="text-3xl md:text-4xl font-serif mb-6" style={{ color: colors.deepGreen }}>Dress Code</h2>
+          <h2 className="text-3xl md:text-5xl font-serif mb-8" style={{ color: colors.deepGreen }}>Dress Code</h2>
           <p className="text-lg text-gray-700 mb-8">
             Para celebrarmos com elegância e conforto, o traje sugerido é <strong className="uppercase">Social Completo</strong>.
           </p>
@@ -1574,7 +1589,7 @@ const App = () => {
       <section id="registry" className="py-20 px-4" style={{ backgroundColor: colors.palePink }}>
         <div className="max-w-4xl mx-auto text-center">
           <Gift className="w-10 h-10 mx-auto mb-4" style={{ color: colors.deepGreen }} />
-          <h2 className="text-3xl md:text-5xl font-serif mb-6" style={{ color: colors.deepGreen }}>Lista de Presentes</h2>
+          <h2 className="text-3xl md:text-5xl font-serif mb-8" style={{ color: colors.deepGreen }}>Lista de Presentes</h2>
           
           <div className="bg-white p-8 rounded-xl shadow-lg mb-10 mx-auto max-w-3xl">
             <p className="text-lg md:text-xl leading-relaxed text-gray-700 italic font-serif">
@@ -1613,18 +1628,13 @@ const App = () => {
             <h3 className="text-2xl font-serif mb-4" style={{ color: colors.deepGreen }}>Presente via PIX</h3>
             <p className="text-gray-600 mb-6 text-sm">
               Se preferir contribuir de forma prática para a nossa lua de mel e montagem da casa, 
-              você pode usar a chave PIX abaixo ou ler o QR Code.
+              você pode usar a chave PIX abaixo.
             </p>
             
-            <div className="flex flex-col md:flex-row items-center gap-8 justify-center">
-              {/* QR Code Placeholder */}
-              <div className="w-32 h-32 bg-gray-100 rounded-lg flex items-center justify-center border">
-                <span className="text-xs text-gray-400">QR Code PIX</span>
-              </div>
-              
-              <div className="text-left w-full md:w-auto">
+            <div className="flex flex-col items-center justify-center">
+              <div className="text-center w-full md:w-auto">
                 <p className="text-xs uppercase text-gray-400 font-bold mb-1">Chave Pix (E-mail ou CPF)</p>
-                <div className="flex items-center gap-2 bg-gray-50 p-3 rounded border border-gray-200">
+                <div className="flex items-center justify-center gap-2 bg-gray-50 p-3 rounded border border-gray-200">
                   <code className="text-[#6E7C5A] font-mono select-all">rodrigoemilla@casamento.com</code>
                   <button 
                     onClick={() => navigator.clipboard.writeText('rodrigoemilla@casamento.com')}
@@ -1644,7 +1654,7 @@ const App = () => {
       {/* --- RSVP SECTION (AGORA COM GRUPOS E SHEETDB) --- */}
       <section id="rsvp" className="py-20 px-4 relative overflow-hidden">
         <div className="max-w-2xl mx-auto text-center relative z-10">
-          <h2 className="text-3xl md:text-5xl font-serif mb-4" style={{ color: colors.deepGreen }}>RSVP</h2>
+          <h2 className="text-3xl md:text-5xl font-serif mb-8" style={{ color: colors.deepGreen }}>RSVP</h2>
           <p className="mb-8" style={{ color: colors.deepGreen }}>Por favor, confirme sua presença até 18 de Setembro de 2026.</p>
 
           <div className="bg-white p-8 rounded-xl shadow-2xl border-t-4" style={{ borderColor: colors.terracotta }}>
