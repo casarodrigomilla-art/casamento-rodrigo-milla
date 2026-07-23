@@ -1901,11 +1901,36 @@ const App = () => {
       </footer>
 
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+        /* Importação da fonte de leitura (textos longos) do Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
         
-        body { font-family: 'Lato', sans-serif; }
-        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+        /* 1. Injetando a Selna Regular */
+        @font-face {
+          font-family: 'Selna';
+          src: url('/fonts/Selna-Regular.otf') format('opentype');
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+        }
+
+        /* 2. Injetando a Selna Oblique (para as ênfases em itálico) */
+        @font-face {
+          font-family: 'Selna';
+          src: url('/fonts/Selna-Oblique.otf') format('opentype');
+          font-weight: normal;
+          font-style: italic;
+          font-display: swap;
+        }
         
+        body { 
+          font-family: 'Lato', sans-serif; 
+        }
+
+        /* 3. Forçando todos os títulos e classes serif a usarem a vossa fonte! */
+        h1, h2, h3, .font-serif { 
+          font-family: 'Selna', serif !important; 
+        }
+              
         @keyframes blob {
           0% { transform: translate(0px, 0px) scale(1); }
           33% { transform: translate(30px, -50px) scale(1.1); }
