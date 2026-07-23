@@ -1507,55 +1507,87 @@ const App = () => {
       <section id="details" className="py-20 px-4 relative">
         <div className="absolute inset-0 opacity-10 pattern-dots" style={{ backgroundImage: `radial-gradient(${colors.sage} 1px, transparent 1px)`, backgroundSize: '20px 20px' }}></div>
         
-        <div className="max-w-6xl mx-auto bg-white bg-opacity-80 backdrop-blur-sm rounded-xl p-8 md:p-12 shadow-xl border border-[#AAB18C]">
-          <div className="grid md:grid-cols-2 gap-12">
-            
-            {/* Informações */}
-            <div>
-              <h2 className="text-3xl md:text-5xl font-serif mb-8" style={{ color: colors.deepGreen }}>O Grande Dia</h2>
-              
-              <div className="space-y-8">
-                <div className="flex gap-4">
-                  <div className="mt-1"><Calendar className="w-6 h-6" style={{ color: colors.terracotta }} /></div>
-                  <div>
-                    <h3 className="font-bold text-xl text-gray-800">18 de Outubro de 2026</h3>
-                    <p className="text-gray-600">Domingo, às 15:00 horas</p>
+        <div className="max-w-6xl mx-auto space-y-8">
+          
+          {/* PARTE 1: DATA E MAPA (Seu código original mantido) */}
+          <div className="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl p-8 md:p-12 shadow-xl border border-[#AAB18C]">
+            <div className="grid md:grid-cols-2 gap-12">
+              <div>
+                <h2 className="text-3xl md:text-5xl font-serif mb-8" style={{ color: colors.deepGreen }}>O Grande Dia</h2>
+                
+                <div className="space-y-8">
+                  <div className="flex gap-4">
+                    <div className="mt-1"><Calendar className="w-6 h-6" style={{ color: colors.terracotta }} /></div>
+                    <div>
+                      <h3 className="font-bold text-xl text-gray-800">18 de Outubro de 2026</h3>
+                      <p className="text-gray-600">Domingo, às 15:00 horas</p>
+                    </div>
                   </div>
-                </div>
 
-                <div className="flex gap-4">
-                  <div className="mt-1"><MapPin className="w-6 h-6" style={{ color: colors.terracotta }} /></div>
-                  <div>
-                    <h3 className="font-bold text-xl text-gray-800">Botânico Quintal</h3>
-                    <p className="text-gray-600">Av. Imperatriz Leopoldina, 681</p>
-                    <p className="text-gray-600">Alto de Pinheiros – São Paulo/SP</p>
-                    <a 
-                      href="https://maps.app.goo.gl/zNWQFPv1v6r8nQEPA" 
-                      target="_blank" 
-                      rel="noreferrer" 
-                      className="inline-flex items-center gap-2 mt-3 px-4 py-2 rounded-lg text-sm font-bold border transition-colors hover:bg-[#D4865C] hover:text-white"
-                      style={{ borderColor: colors.terracotta, color: colors.terracotta }}
-                    >
-                      Ver no Google Maps
-                    </a>
+                  <div className="flex gap-4">
+                    <div className="mt-1"><MapPin className="w-6 h-6" style={{ color: colors.terracotta }} /></div>
+                    <div>
+                      <h3 className="font-bold text-xl text-gray-800">Botânico Quintal</h3>
+                      <p className="text-gray-600">Av. Imperatriz Leopoldina, 681</p>
+                      <p className="text-gray-600">Alto de Pinheiros – São Paulo/SP</p>
+                      <a 
+                        href="https://maps.app.goo.gl/zNWQFPv1v6r8nQEPA" 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        className="inline-flex items-center gap-2 mt-3 px-4 py-2 rounded-lg text-sm font-bold border transition-colors hover:bg-[#D4865C] hover:text-white"
+                        style={{ borderColor: colors.terracotta, color: colors.terracotta }}
+                      >
+                        Ver no Google Maps
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Mapa Embedado (Simulação visual) */}
-            <div className="h-64 md:h-full bg-gray-200 rounded-lg overflow-hidden border border-gray-300 relative">
-               <iframe 
-                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.433293675684!2d-46.73292492383256!3d-23.542901361276226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef8e1e1e1e1e1%3A0x1e1e1e1e1e1e1e1e!2sAv.%20Imperatriz%20Leopoldina%2C%20681%20-%20Vila%20Leopoldina%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2005305-011!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
-                 width="100%" 
-                 height="100%" 
-                 style={{ border: 0 }} 
-                 allowFullScreen="" 
-                 loading="lazy" 
-                 title="Mapa Botânico Quintal"
-               ></iframe>
+              {/* Mapa Embedado */}
+              <div className="h-64 md:h-full bg-gray-200 rounded-lg overflow-hidden border border-gray-300 relative">
+                 <iframe 
+                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.433293675684!2d-46.73292492383256!3d-23.542901361276226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef8e1e1e1e1e1%3A0x1e1e1e1e1e1e1e1e!2sAv.%20Imperatriz%20Leopoldina%2C%20681%20-%20Vila%20Leopoldina%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2005305-011!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+                   width="100%" 
+                   height="100%" 
+                   style={{ border: 0 }} 
+                   allowFullScreen="" 
+                   loading="lazy" 
+                   title="Mapa Botânico Quintal"
+                 ></iframe>
+              </div>
             </div>
           </div>
+
+          {/* PARTE 2: ORIENTAÇÕES AOS CONVIDADOS (O texto novo em blocos) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div className="bg-white bg-opacity-90 p-8 rounded-xl shadow-md border border-[#CCCDB6]">
+              <Clock className="w-8 h-8 mb-4" style={{ color: colors.terracotta }} />
+              <h3 className="font-serif text-xl mb-3 text-gray-800">Chegue com calma</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Se, assim como nós, você também quiser aproveitar cada segundo desse dia, a casa estará pronta para recebê-lo <strong>15 minutos antes</strong> do horário indicado no convite. Chegue com calma, aproveite uma música gostosa, escolha seu lugar e já entre no clima antes mesmo da cerimônia começar.
+              </p>
+            </div>
+
+            <div className="bg-white bg-opacity-90 p-8 rounded-xl shadow-md border border-[#CCCDB6]">
+              <Users className="w-8 h-8 mb-4" style={{ color: colors.terracotta }} />
+              <h3 className="font-serif text-xl mb-3 text-gray-800">A Cerimônia</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Os lugares para a cerimônia serão ocupados por ordem de chegada e acomodarão a maior parte dos convidados. Se, para você, for importante acompanhar a celebração sentado e com uma vista privilegiada dos noivos, sugerimos chegar entre <strong>14h45 e 15h00</strong>.
+              </p>
+            </div>
+
+            <div className="bg-white bg-opacity-90 p-8 rounded-xl shadow-md border border-[#CCCDB6]">
+              <Car className="w-8 h-8 mb-4" style={{ color: colors.terracotta }} />
+              <h3 className="font-serif text-xl mb-3 text-gray-800">Como chegar</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Como queremos que todos aproveitem a festa como se não houvesse amanhã, sugerimos vir de <strong>Uber</strong>. Mas, se preferir ir de carro, haverá serviço de valet disponível no local.
+              </p>
+            </div>
+
+          </div>
+
         </div>
       </section>
 
@@ -1598,15 +1630,17 @@ const App = () => {
 
       {/* --- REGISTRY / LISTA DE PRESENTES --- */}
       <section id="registry" className="py-20 px-4" style={{ backgroundColor: colors.palePink }}>
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <Gift className="w-10 h-10 mx-auto mb-4" style={{ color: colors.deepGreen }} />
           <h2 className="text-3xl md:text-5xl font-serif mb-8" style={{ color: colors.deepGreen }}>Lista de Presentes</h2>
           
-          <div className="bg-white p-8 rounded-xl shadow-lg mb-12 mx-auto max-w-3xl">
-            <p className="text-lg md:text-xl leading-relaxed text-gray-700 italic font-serif">
-              "Estamos muito felizes em compartilhar esse momento com vocês! 
-              Como já estamos montando nosso primeiro lar juntos, optamos por uma lista de presentes 'à moda antiga' e também opções virtuais.
-              Seus presentes chegarão em um momento perfeito para nos ajudar a construir nosso cantinho."
+          {/* TEXTO INTRODUTÓRIO NOVO */}
+          <div className="bg-white p-8 rounded-xl shadow-lg mb-12 mx-auto max-w-3xl border border-[#CCCDB6]">
+            <p className="text-xl md:text-2xl font-serif italic mb-4" style={{ color: colors.terracotta }}>
+              Optamos por uma lista de presentes à moda antiga!
+            </p>
+            <p className="text-md md:text-lg text-gray-700 font-light leading-relaxed">
+              Depois do casamento, começaremos uma nova fase: nossa primeira casa juntos. Por isso, aos que desejarem nos presentear, escolhemos presentes "de verdade", que farão parte do nosso dia a dia e nos ajudarão a construir, aos poucos, o nosso cantinho.
             </p>
           </div>
 
@@ -1637,17 +1671,16 @@ const App = () => {
             ))}
           </div>
 
-          {/* ÁREA PIX (MENOR DESTAQUE, DISCRETA E ELEGANTE) */}
-          <div className="max-w-md mx-auto bg-white/60 backdrop-blur-sm p-8 rounded-xl border border-[#CCCDB6] flex flex-col items-center text-center shadow-sm">
-            <h3 className="text-xl font-serif mb-2" style={{ color: colors.deepGreen }}>Opção PIX</h3>
-            <p className="text-gray-600 mb-6 text-sm">
-              Se preferir contribuir de forma prática para a nossa lua de mel e montagem da casa, 
-              você pode usar a chave PIX abaixo.
+          {/* ÁREA PIX (TEXTO DE NORONHA) */}
+          <div className="max-w-md mx-auto bg-white p-8 rounded-xl border border-[#CCCDB6] flex flex-col items-center text-center shadow-lg">
+            <h3 className="text-2xl font-serif mb-4" style={{ color: colors.deepGreen }}>Nossa Lua de Mel</h3>
+            <p className="text-gray-600 mb-8 text-sm leading-relaxed">
+              Se a sua preferência for presentear em dinheiro, nos comprometemos a destinar seu presente às mais deliciosas aventuras da nossa lua de mel vivendo jantares deliciosos, mergulhos deslumbrantes e passeios inesquecíveis em <strong className="text-gray-800">Fernando de Noronha</strong>.
             </p>
             
             <div className="w-full mb-6">
               <p className="text-[10px] uppercase text-gray-400 font-bold mb-1">Chave Pix (E-mail ou CPF)</p>
-              <div className="flex flex-col md:flex-row items-center justify-between bg-white p-2 md:pl-4 rounded-lg border border-gray-200 w-full gap-2">
+              <div className="flex flex-col md:flex-row items-center justify-between bg-[#F9F9F4] p-2 md:pl-4 rounded-lg border border-gray-200 w-full gap-2">
                 <code className="text-[#6E7C5A] font-mono font-bold text-sm select-all">rodrigoemilla@casamento.com</code>
                 <button 
                   onClick={() => navigator.clipboard.writeText('rodrigoemilla@casamento.com')}
@@ -1661,17 +1694,13 @@ const App = () => {
               <p className="text-[10px] text-gray-400 mt-3 uppercase tracking-widest">Banco: Nubank | Titular: Rodrigo Toniolo</p>
             </div>
 
-            {/* EXPANSÍVEL: IDEIAS DE PRESENTES (PRIORIDADE 7) */}
+            {/* EXPANSÍVEL: IDEIAS DE PRESENTES */}
             <details className="w-full group">
               <summary className="cursor-pointer list-none flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wider py-3 border-t border-gray-200 text-gray-500 hover:text-[#D4865C] transition-colors outline-none">
                 Ver ideias de presentes
-                {/* A seta gira automaticamente quando o painel abre usando Tailwind */}
-                <span className="transition duration-300 group-open:-rotate-180 text-xs">
-                  ▼
-                </span>
+                <span className="transition duration-300 group-open:-rotate-180 text-xs">▼</span>
               </summary>
               
-              {/* LISTA DE PRESENTES ANIMADA */}
               <div className="mt-4 grid grid-cols-1 gap-3 text-left animate-fade-in-down">
                 {[
                   { icon: '🥂', title: 'Brinde de Lua de Mel', price: 'R$ 150,00' },
@@ -1679,7 +1708,7 @@ const App = () => {
                   { icon: '💆‍♀️', title: 'Spa para o Casal', price: 'R$ 400,00' },
                   { icon: '✈️', title: 'Cota de Passagem Aérea', price: 'R$ 500,00' }
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-center justify-between bg-white p-4 rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                  <div key={idx} className="flex items-center justify-between bg-[#F9F9F4] p-4 rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">{item.icon}</span>
                       <span className="text-sm font-medium text-gray-700">{item.title}</span>
