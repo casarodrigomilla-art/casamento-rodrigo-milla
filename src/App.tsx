@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Heart, MapPin, Calendar, Gift, Camera, Check, X, Menu, Loader, Music, Copy, Lock, User, Shirt } from 'lucide-react';
+import { Heart, MapPin, Calendar, Gift, Camera, Check, X, Menu, Loader, Music, Copy, Lock, User, Shirt, Clock, Users, Car } from 'lucide-react';
 
 // --- CONFIGURAÇÃO DE CORES (PALETA DO CASAL) ---
 const colors = {
