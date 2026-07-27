@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Heart, MapPin, Calendar, Gift, Camera, Check, X, Menu, Loader, Music, Copy, Lock, User, Shirt, Clock, Users, Car } from 'lucide-react';
+import { Heart, MapPin, Calendar, Gift, Camera, Check, X, Menu, Loader, Music, Copy, Lock, User, Shirt, Clock, Users, Car, Baby } from 'lucide-react';
 
 // --- CONFIGURAÇÃO DE CORES (PALETA DO CASAL) ---
 const colors = {
@@ -1236,7 +1236,23 @@ const App = () => {
       setIsMenuOpen(false);
     }
   };
-
+  
+// --- AUTOPLAY APÓS O LOGIN ---
+  useEffect(() => {
+    // Se o usuário acabou de logar e o player de áudio já existe na tela
+    if (isAuthenticated && audioRef.current) {
+      // Tentamos dar o play imediatamente
+      audioRef.current.play()
+        .then(() => {
+          setIsPlaying(true); // Se der certo, atualizamos o botão para mostrar que está tocando
+        })
+        .catch((erro) => {
+          // Caso o navegador do celular seja muito rígido e ainda bloqueie, ele não quebra o site
+          console.log("Autoplay bloqueado pelo navegador:", erro);
+        });
+    }
+  }, [isAuthenticated]); // Esse efeito só roda quando o 'isAuthenticated' muda
+  
   // --- LÓGICA RSVP ---
   const handleSearchGuest = (e) => {
     e.preventDefault();
@@ -1387,11 +1403,11 @@ const App = () => {
             
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8 items-center">
-              {['A História', 'O Dia', 'Traje', 'Presentes', 'RSVP'].map((item, idx) => (
+              {['Nós', 'O Dia', 'Traje', 'Presentes', 'RSVP'].map((item, idx) => (
                 <button 
                   key={idx}
-                  onClick={() => scrollTo(item === 'A História' ? 'story' : item === 'O Dia' ? 'details' : item === 'Traje' ? 'dresscode' : item === 'Presentes' ? 'registry' : 'rsvp')}
-                  className="text-sm uppercase tracking-wider hover:text-[#D4865C] transition-colors"
+                  onClick={() => scrollTo(item === 'Nós' ? 'story' : item === 'O Dia' ? 'details' : item === 'Traje' ? 'dresscode' : item === 'Presentes' ? 'registry' : 'rsvp')}
+                  className="text-sm font-serif uppercase tracking-wider hover:text-[#D4865C] transition-colors"
                   style={{ color: colors.deepGreen }}
                 >
                   {item}
@@ -1399,7 +1415,7 @@ const App = () => {
               ))}
               <button 
                 onClick={() => scrollTo('rsvp')}
-                className="px-6 py-2 rounded-full text-white transition-transform transform hover:scale-105 shadow-lg"
+                className="font-serif tracking-widest px-6 py-2 rounded-full text-white transition-transform transform hover:scale-105 shadow-lg"
                 style={{ backgroundColor: colors.terracotta }}
               >
                 Confirmar
@@ -1419,11 +1435,11 @@ const App = () => {
         {isMenuOpen && (
           <div className="md:hidden absolute w-full bg-[#FEFEF2] shadow-xl border-t border-[#AAB18C]">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
-              {['A História', 'O Dia', 'Traje', 'Presentes', 'RSVP'].map((item, idx) => (
+              {['Nós', 'O Dia', 'Traje', 'Presentes', 'RSVP'].map((item, idx) => (
                 <button 
                   key={idx}
-                  onClick={() => scrollTo(item === 'A História' ? 'story' : item === 'O Dia' ? 'details' : item === 'Traje' ? 'dresscode' : item === 'Presentes' ? 'registry' : 'rsvp')}
-                  className="block px-3 py-2 text-base font-medium w-full text-center hover:bg-[#F1CF95] hover:bg-opacity-20 rounded-md"
+                  onClick={() => scrollTo(item === 'Nós' ? 'story' : item === 'O Dia' ? 'details' : item === 'Traje' ? 'dresscode' : item === 'Presentes' ? 'registry' : 'rsvp')}
+                  className="block px-3 py-2 text-base font-serif uppercase tracking-wider w-full text-center hover:bg-[#F1CF95] hover:bg-opacity-20 rounded-md"
                   style={{ color: colors.deepGreen }}
                 >
                   {item}
@@ -1444,7 +1460,7 @@ const App = () => {
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#FEFEF2]/40 via-transparent to-[#FEFEF2]"></div>
 
         <div className="relative z-10 text-center px-4 mt-16">
-          <p className="text-lg md:text-xl uppercase tracking-[0.2em] mb-12 font-bold" style={{ color: colors.terracotta }}>Vamos nos casar</p>
+          <p className="text-lg md:text-xl font-serif uppercase tracking-[0.2em] mb-12 font-bold" style={{ color: colors.terracotta }}>Vamos nos casar</p>
           
           <img 
             src="/assinatura.png" 
@@ -1475,7 +1491,7 @@ const App = () => {
       <section id="story" className="py-20 px-4 bg-[#FEFEF2]">
         <div className="max-w-4xl mx-auto text-center">
           <Heart className="w-10 h-10 mx-auto mb-4" style={{ color: colors.terracotta }} />
-          <h2 className="text-3xl md:text-5xl font-serif mb-10" style={{ color: colors.deepGreen }}>Nossa História</h2>
+          <h2 className="text-3xl md:text-5xl font-serif mb-10" style={{ color: colors.deepGreen }}>Vamos Casar</h2>
           
           {/* BLOCO DE TEXTO COM MAIS RESPIRO */}
           <div className="max-w-3xl mx-auto text-center text-lg text-gray-700 font-light leading-relaxed space-y-6 mb-16">
@@ -1560,7 +1576,7 @@ const App = () => {
           </div>
 
           {/* PARTE 2: ORIENTAÇÕES AOS CONVIDADOS (O texto novo em blocos) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             <div className="bg-white bg-opacity-90 p-8 rounded-xl shadow-md border border-[#CCCDB6]">
               <Clock className="w-8 h-8 mb-4" style={{ color: colors.terracotta }} />
@@ -1585,6 +1601,14 @@ const App = () => {
                 Como queremos que todos aproveitem a festa como se não houvesse amanhã, sugerimos vir de <strong>Uber</strong>. Mas, se preferir ir de carro, haverá serviço de valet disponível no local.
               </p>
             </div>
+
+          <div className="bg-white bg-opacity-90 p-8 rounded-xl shadow-md border border-[#CCCDB6]">
+            <Baby className="w-8 h-8 mb-4" style={{ color: colors.terracotta }} />
+            <h3 className="font-serif text-xl mb-3 text-gray-800">Crianças</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Amamos os pequenos, mas nossa festa não terá estrutura para recebê-los com o conforto que gostaríamos. Por isso, esperamos que vocês aproveitem essa noite dedicada aos adultos, celebrem, dancem e curtam cada momento com a gente!
+            </p>
+          </div>
 
           </div>
 
@@ -1726,7 +1750,7 @@ const App = () => {
       <section id="rsvp" className="py-20 px-4 relative overflow-hidden">
         <div className="max-w-2xl mx-auto text-center relative z-10">
           <h2 className="text-3xl md:text-5xl font-serif mb-8" style={{ color: colors.deepGreen }}>RSVP</h2>
-          <p className="mb-8" style={{ color: colors.deepGreen }}>Por favor, confirme sua presença até 18 de Setembro de 2026.</p>
+          <p className="mb-8" style={{ color: colors.deepGreen }}>Por favor, confirme sua presença até 08 de Setembro de 2026.</p>
 
           <div className="bg-white p-8 rounded-xl shadow-2xl border-t-4" style={{ borderColor: colors.terracotta }}>
             
@@ -1735,14 +1759,14 @@ const App = () => {
               <form onSubmit={handleSearchGuest} className="space-y-6">
                 <div>
                   <label className="block text-left text-sm font-semibold mb-2" style={{ color: colors.deepGreen }}>
-                    Digite seu nome ou sobrenome
+                    Digite seu nome e sobrenome (como escrito no convite)
                   </label>
                   <input 
                     type="text" 
                     required
                     value={searchName}
                     onChange={(e) => setSearchName(e.target.value)}
-                    placeholder="Ex: Ciro Costa"
+                    placeholder="Ex: Juliana Toniolo"
                     className="w-full p-4 border rounded-lg focus:ring-2 outline-none transition-all bg-[#FEFEF2]"
                     style={{ borderColor: colors.sage, color: colors.deepGreen }}
                   />
@@ -1754,7 +1778,21 @@ const App = () => {
                 >
                   Procurar Convite
                 </button>
-              </form>
+                
+              {/* NOVA MENSAGEM DE SUPORTE DA ASSESSORIA */}
+              <div className="mt-8 pt-6 border-t border-gray-200 text-center animate-fadeIn">
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  Não encontrou seu nome ou está com dificuldades na busca?
+                  <br />
+                  Entre em contato com a nossa assessoria:
+                  <br />
+                  <strong className="text-base mt-2 inline-block" style={{ color: colors.deepGreen }}>
+                    Bia – (XX) XXXXX-XXXX
+                  </strong>
+                </p>
+              </div>
+            </form>
+          
             )}
 
             {/* ERROR: NOT FOUND */}
