@@ -1210,7 +1210,7 @@ const App = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     // Senha simples para o frontend (idealmente validado no backend)
-    if (passwordInput.toLowerCase() === 'amor2026') {
+    if (passwordInput.toLowerCase() === 'noronha2026') {
       setIsAuthenticated(true);
     } else {
       setLoginError(true);
@@ -1545,7 +1545,7 @@ const App = () => {
                     <div>
                       <h3 className="font-bold text-xl text-gray-800">Botânico Quintal</h3>
                       <p className="text-gray-600">Av. Imperatriz Leopoldina, 681</p>
-                      <p className="text-gray-600">Alto de Pinheiros – São Paulo/SP</p>
+                      <p className="text-gray-600">Vila Leopoldina – São Paulo/SP</p>
                       <a 
                         href="https://maps.app.goo.gl/zNWQFPv1v6r8nQEPA" 
                         target="_blank" 
@@ -1606,7 +1606,7 @@ const App = () => {
             <Baby className="w-8 h-8 mb-4" style={{ color: colors.terracotta }} />
             <h3 className="font-serif text-xl mb-3 text-gray-800">Crianças</h3>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Amamos os pequenos, mas nossa festa não terá estrutura para recebê-los com o conforto que gostaríamos. Por isso, esperamos que vocês aproveitem essa noite dedicada aos adultos, celebrem, dancem e curtam cada momento com a gente!
+              Amamos os pequenos, mas nossa festa não terá estrutura para recebê-los com o conforto que gostaríamos. Por isso, esperamos que vocês aproveitem essa noite <strong>dedicada aos adultos<strong>, celebrem, dancem e curtam cada momento com a gente!
             </p>
           </div>
 
@@ -1668,31 +1668,26 @@ const App = () => {
             </p>
           </div>
 
-          {/* LOJAS (MAIOR DESTAQUE) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            {[
-              { name: 'Camicado', url: '#' },
-              { name: 'Mickey Presentes', url: '#' },
-              { name: 'Fast Shop', url: '#' }
-            ].map((store, i) => (
-              <a 
-                key={i} 
-                href={store.url}
-                target="_blank"
-                rel="noreferrer"
-                className="group p-8 bg-white rounded-xl shadow-md hover:shadow-xl transition-all flex flex-col items-center justify-center gap-4 border-b-4 transform hover:-translate-y-1"
-                style={{ borderColor: colors.deepGreen }}
-              >
-                <Gift size={32} style={{ color: colors.terracotta }} />
-                <h3 className="font-serif font-bold text-2xl text-gray-800 tracking-wide">{store.name}</h3>
-                <span 
-                  className="mt-2 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-white transition-opacity group-hover:opacity-90" 
-                  style={{ backgroundColor: colors.terracotta }}
-                >
-                  Ver lista
-                </span>
-              </a>
-            ))}
+          {/* SEÇÃO DE LISTAS EXTERNAS - MANTENDO O DESIGN ORIGINAL */}
+          <div className="text-center mb-12">
+            <h3 className="text-2xl font-serif font-bold mb-2 text-gray-800">
+              Lista Amazon
+            </h3>
+            
+            {/* Única linha adicionada ao design original: */}
+            <p className="text-sm text-gray-600 mb-6 font-sans italic">
+              Tudo o que você comprar aqui, receberemos em casa!
+            </p>
+          
+            <a 
+              href="https://www.amazon.com.br/hz/wishlist/ls/1825NXDAE8RMA?ref_=wl_share"
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-4 rounded-lg font-serif tracking-widest uppercase text-white font-bold transition-transform transform hover:scale-[1.02] shadow-md"
+              style={{ backgroundColor: colors.deepGreen }}
+            >
+              Acessar Lista
+            </a>
           </div>
 
           {/* ÁREA PIX (TEXTO DE NORONHA) */}
@@ -1705,9 +1700,9 @@ const App = () => {
             <div className="w-full mb-6">
               <p className="text-[10px] uppercase text-gray-400 font-bold mb-1">Chave Pix (E-mail ou CPF)</p>
               <div className="flex flex-col md:flex-row items-center justify-between bg-[#F9F9F4] p-2 md:pl-4 rounded-lg border border-gray-200 w-full gap-2">
-                <code className="text-[#6E7C5A] font-mono font-bold text-sm select-all">rodrigoemilla@casamento.com</code>
+                <code className="text-[#6E7C5A] font-mono font-bold text-sm select-all">casa.rodrigo.milla@gmail.com</code>
                 <button 
-                  onClick={() => navigator.clipboard.writeText('rodrigoemilla@casamento.com')}
+                  onClick={() => navigator.clipboard.writeText('casa.rodrigo.milla@gmail.com')}
                   className="w-full md:w-auto px-4 py-2 hover:bg-[#EBDDD3] rounded-md transition-colors flex items-center justify-center gap-2 text-sm font-bold border border-transparent hover:border-[#D4865C]"
                   style={{ color: colors.terracotta }}
                   title="Copiar chave"
@@ -1715,7 +1710,7 @@ const App = () => {
                   <Copy size={16} /> Copiar
                 </button>
               </div>
-              <p className="text-[10px] text-gray-400 mt-3 uppercase tracking-widest">Banco: Nubank | Titular: Rodrigo Toniolo</p>
+              <p className="text-[10px] text-gray-400 mt-3 uppercase tracking-widest">Banco: ITAÚ UNIBANCO S.A | Titular: Milla Cordeiro Amarante</p>
             </div>
 
             {/* EXPANSÍVEL: IDEIAS DE PRESENTES */}
@@ -1727,10 +1722,12 @@ const App = () => {
               
               <div className="mt-4 grid grid-cols-1 gap-3 text-left animate-fade-in-down">
                 {[
-                  { icon: '🥂', title: 'Brinde de Lua de Mel', price: 'R$ 150,00' },
-                  { icon: '🍝', title: 'Jantar Romântico', price: 'R$ 250,00' },
-                  { icon: '💆‍♀️', title: 'Spa para o Casal', price: 'R$ 400,00' },
-                  { icon: '✈️', title: 'Cota de Passagem Aérea', price: 'R$ 500,00' }
+                  { icon: '🍽️', title: 'Jantar Restaurante Maravilha', price: 'R$ 400,00' },
+                  { icon: '🤿', title: 'Mergulho Naufrágio do Porto', price: 'R$ 1.100,00' },
+                  { icon: '🏝️', title: 'Ilha Tour', price: 'R$ 600,00' },
+                  { icon: '🐠', title: 'Mergulho Laje Dois Irmãos', price: 'R$ 1.500,00' },
+                  { icon: '🚤', title: 'Passeio de Barco', price: 'R$ 800,00' },
+                  { icon: '🌅', title: 'Petiscos ao pôr do sol no Bar do Meio', price: 'R$ 500,00' }
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-center justify-between bg-[#F9F9F4] p-4 rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                     <div className="flex items-center gap-3">
@@ -1750,7 +1747,7 @@ const App = () => {
       <section id="rsvp" className="py-20 px-4 relative overflow-hidden">
         <div className="max-w-2xl mx-auto text-center relative z-10">
           <h2 className="text-3xl md:text-5xl font-serif mb-8" style={{ color: colors.deepGreen }}>RSVP</h2>
-          <p className="mb-8" style={{ color: colors.deepGreen }}>Por favor, confirme sua presença até 08 de Setembro de 2026.</p>
+          <p className="mb-8" style={{ color: colors.deepGreen }}>Por favor, confirme sua presença até <strong>08 de Setembro de 2026<strong>.</p>
 
           <div className="bg-white p-8 rounded-xl shadow-2xl border-t-4" style={{ borderColor: colors.terracotta }}>
             
@@ -1766,7 +1763,7 @@ const App = () => {
                     required
                     value={searchName}
                     onChange={(e) => setSearchName(e.target.value)}
-                    placeholder="Ex: Juliana Toniolo"
+                    placeholder="Ex: Mick Jagger"
                     className="w-full p-4 border rounded-lg focus:ring-2 outline-none transition-all bg-[#FEFEF2]"
                     style={{ borderColor: colors.sage, color: colors.deepGreen }}
                   />
@@ -1778,19 +1775,6 @@ const App = () => {
                 >
                   Procurar Convite
                 </button>
-                
-              {/* NOVA MENSAGEM DE SUPORTE DA ASSESSORIA */}
-              <div className="mt-8 pt-6 border-t border-gray-200 text-center animate-fadeIn">
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Não encontrou seu nome ou está com dificuldades na busca?
-                  <br />
-                  Entre em contato com a nossa assessoria:
-                  <br />
-                  <strong className="text-base mt-2 inline-block" style={{ color: colors.deepGreen }}>
-                    Bia – (XX) XXXXX-XXXX
-                  </strong>
-                </p>
-              </div>
             </form>
           
             )}
@@ -1934,7 +1918,7 @@ const App = () => {
         <img src="/monograma.png" alt="Monograma" className="h-16 mb-4 object-contain brightness-0 invert opacity-90" />
         <p className="mb-8 opacity-80">18 . 10 . 2026</p>
         <div className="text-sm opacity-60">
-          <p>Feito com amor • São Paulo, Brasil</p>
+          <p>Feito com amor pelo Rô • São Paulo, Brasil</p>
         </div>
       </footer>
 
