@@ -1606,7 +1606,7 @@ const App = () => {
             <Baby className="w-8 h-8 mb-4" style={{ color: colors.terracotta }} />
             <h3 className="font-serif text-xl mb-3 text-gray-800">Crianças</h3>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Amamos os pequenos, mas nossa festa não terá estrutura para recebê-los com o conforto que gostaríamos. Por isso, esperamos que vocês aproveitem essa noite <strong>dedicada aos adultos<strong>, celebrem, dancem e curtam cada momento com a gente!
+              Amamos os pequenos, mas nossa festa não terá estrutura para recebê-los com o conforto que gostaríamos. Por isso, esperamos que vocês aproveitem essa noite <strong>dedicada aos adultos</strong>, celebrem, dancem e curtam cada momento com a gente!
             </p>
           </div>
 
@@ -1747,7 +1747,7 @@ const App = () => {
       <section id="rsvp" className="py-20 px-4 relative overflow-hidden">
         <div className="max-w-2xl mx-auto text-center relative z-10">
           <h2 className="text-3xl md:text-5xl font-serif mb-8" style={{ color: colors.deepGreen }}>RSVP</h2>
-          <p className="mb-8" style={{ color: colors.deepGreen }}>Por favor, confirme sua presença até <strong>08 de Setembro de 2026<strong>.</p>
+          <p className="mb-8" style={{ color: colors.deepGreen }}>Por favor, confirme sua presença até <strong>08 de Setembro de 2026</strong>.</p>
 
           <div className="bg-white p-8 rounded-xl shadow-2xl border-t-4" style={{ borderColor: colors.terracotta }}>
             
