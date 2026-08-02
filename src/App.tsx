@@ -1668,22 +1668,28 @@ const App = () => {
             </p>
           </div>
 
-          {/* SEÇÃO DE LISTAS EXTERNAS - MANTENDO O DESIGN ORIGINAL */}
-          <div className="text-center mb-12">
-            <h3 className="text-2xl font-serif font-bold mb-2 text-gray-800">
+          {/* CARD EMOLDURADO: LISTA AMAZON */}
+          <div className="max-w-md mx-auto mb-16 bg-[#FEFEF2] p-8 md:p-10 rounded-2xl border border-[#CCCDB6] shadow-md text-center relative overflow-hidden transition-all hover:shadow-lg">
+            
+            {/* Detalhe estético: pequena linha decorativa no topo do card */}
+            <div 
+              className="absolute top-0 left-0 right-0 h-1" 
+              style={{ backgroundColor: colors.terracotta }}
+            />
+          
+            <h3 className="text-2xl md:text-3xl font-serif font-bold mb-3 text-gray-800">
               Lista Amazon
             </h3>
             
-            {/* Única linha adicionada ao design original: */}
-            <p className="text-sm text-gray-600 mb-6 font-sans italic">
+            <p className="text-sm text-gray-600 mb-8 font-sans italic leading-relaxed">
               Tudo o que você comprar aqui, receberemos em casa!
             </p>
           
             <a 
-              href="https://www.amazon.com.br/hz/wishlist/ls/1825NXDAE8RMA?ref_=wl_share"
+              href="https://www.amazon.com.br/hz/wishlist/ls/1825NXDAE8RMA?ref_=wl_share" /* <-- Lembre-se de colocar o link real da lista de vocês aqui */
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-block px-8 py-4 rounded-lg font-serif tracking-widest uppercase text-white font-bold transition-transform transform hover:scale-[1.02] shadow-md"
+              className="inline-block w-full py-4 rounded-xl font-serif tracking-widest uppercase text-white font-bold transition-transform transform hover:scale-[1.02] shadow-sm"
               style={{ backgroundColor: colors.deepGreen }}
             >
               Acessar Lista
