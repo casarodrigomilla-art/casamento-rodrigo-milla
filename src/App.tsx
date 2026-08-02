@@ -31,7 +31,7 @@ const GUEST_DATABASE = [
     id: 'convite-2',
     groupName: "Juliana e Felipe",
     members: [
-      { id: 'c2-m1', name: "Juliana Pereira Toniolo" },
+      { id: 'c2-m1', name: "Juliana Pereira Toniolo Rizzutto" },
       { id: 'c2-m2', name: "Felipe Almeida Rizzutto" }
     ]
   },
@@ -63,6 +63,7 @@ const GUEST_DATABASE = [
     groupName: "Julia",
     members: [
       { id: 'c6-m1', name: "Julia Toniolo Facchini" }
+      { id: 'c6-m2', name: "Rafael Vergani" }
     ]
   },
   {
@@ -147,8 +148,8 @@ const GUEST_DATABASE = [
     id: 'convite-17',
     groupName: "Edson e Leda",
     members: [
-      { id: 'c17-m1', name: "Edson Luís Molesini Burgo Guerra" },
-      { id: 'c17-m2', name: "Leda Cristina Miranda Gomes" }
+      { id: 'c17-m1', name: "Edson Guerra" },
+      { id: 'c17-m2', name: "Leda Gomes" }
     ]
   },
   {
@@ -178,8 +179,8 @@ const GUEST_DATABASE = [
     id: 'convite-21',
     groupName: "Silvio e Monica",
     members: [
-      { id: 'c21-m1', name: "Silvio Vendramin Camargo" },
-      { id: 'c21-m2', name: "Monica de Godoy" }
+      { id: 'c21-m1', name: "Silvio Camargo" },
+      { id: 'c21-m2', name: "Monica Godoy" }
     ]
   },
   {
@@ -483,27 +484,6 @@ const GUEST_DATABASE = [
     groupName: "Luis",
     members: [
       { id: 'c60-m1', name: "Luis Fernando Barcelos" }
-    ]
-  },
-  {
-    id: 'convite-61',
-    groupName: "Amanda",
-    members: [
-      { id: 'c61-m1', name: "Amanda Santos" }
-    ]
-  },
-  {
-    id: 'convite-62',
-    groupName: "Valéria",
-    members: [
-      { id: 'c62-m1', name: "Valéria Canopé" }
-    ]
-  },
-  {
-    id: 'convite-63',
-    groupName: "Andréia",
-    members: [
-      { id: 'c63-m1', name: "Andréia Severina Verçosa" }
     ]
   },
   {
@@ -932,7 +912,6 @@ const GUEST_DATABASE = [
     groupName: "Johnny e Johnny",
     members: [
       { id: 'c118-m1', name: "Johnny Matioli" },
-      { id: 'c118-m2', name: "Johnny Matioli (namorada)" }
     ]
   },
   {
@@ -1027,10 +1006,17 @@ const GUEST_DATABASE = [
     ]
   },
   {
-    id: 'convite-131',
-    groupName: "Antonio",
+    id: 'convite-152',
+    groupName: "Fer",
     members: [
-      { id: 'c131-m1', name: "Antonio Julian" }
+      { id: 'c152-m1', name: "Fernando Yanez" }
+    ]
+  },
+  {
+    id: 'convite-131',
+    groupName: "Alex",
+    members: [
+      { id: 'c131-m1', name: "Alejandro Camargo" }
     ]
   },
   {
@@ -1142,10 +1128,10 @@ const GUEST_DATABASE = [
   },
   {
     id: 'convite-146',
-    groupName: "Daria e Daria",
+    groupName: "Daria e Gustavo",
     members: [
       { id: 'c146-m1', name: "Daria Muzychenko" },
-      { id: 'c146-m2', name: "Daria Muzychenko (marido)" }
+      { id: 'c146-m2', name: "Gustavo Makhoul" }
     ]
   },
   {
@@ -1177,6 +1163,36 @@ const GUEST_DATABASE = [
     members: [
       { id: 'c150-m1', name: "Ciro Costa" },
       { id: 'c150-m2', name: "Letícia " }
+    ]
+  },
+  {
+    id: 'convite-153',
+    groupName: "Raphael",
+    members: [
+      { id: 'c153-m1', name: "Raphael Gallo" }
+    ]
+  },
+  {
+    id: 'convite-154',
+    groupName: "Jim e Sra",
+    members: [
+      { id: 'c154-m1', name: "Jim McGarr" },
+      { id: 'c154-m2', name: "Sra. McGarr" }
+    ]
+  },
+  {
+    id: 'convite-155',
+    groupName: "Laura",
+    members: [
+      { id: 'c155-m1', name: "Laura Pugliese" },
+    ]
+  },
+  {
+    id: 'convite-156',
+    groupName: "Beatriz",
+    members: [
+      { id: 'c156-m1', name: "Beatriz Miranda" },
+      { id: 'c156-m2', name: "Arthur Canto Cerasoli" }
     ]
   }
 ];
