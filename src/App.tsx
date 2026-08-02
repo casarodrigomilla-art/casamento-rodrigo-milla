@@ -62,7 +62,7 @@ const GUEST_DATABASE = [
     id: 'convite-6',
     groupName: "Julia",
     members: [
-      { id: 'c6-m1', name: "Julia Toniolo Facchini" }
+      { id: 'c6-m1', name: "Julia Toniolo Facchini" },
       { id: 'c6-m2', name: "Rafael Vergani" }
     ]
   },
@@ -1272,12 +1272,12 @@ const App = () => {
   // --- LÓGICA RSVP ---
   const handleSearchGuest = (e) => {
     e.preventDefault();
-    const normalize = (str) => str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const normalize = (str) => str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
     const searchNorm = normalize(searchName);
     
     // Procura se o nome digitado bate com algum membro de algum grupo
     const group = GUEST_DATABASE.find(g => 
-      g.members.some(m => normalize(m.name).includes(searchNorm)) && searchName.length > 2
+      g.members.some(m => normalize(m.name).includes(searchNorm)) && searchName.length >= 2
     );
 
     if (group) {
