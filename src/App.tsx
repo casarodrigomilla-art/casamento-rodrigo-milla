@@ -870,9 +870,9 @@ const GUEST_DATABASE = [
   },
   {
     id: 'convite-113',
-    groupName: "Franceso e Maria",
+    groupName: "Francesco e Maria",
     members: [
-      { id: 'c113-m1', name: "Franceso Cervetto" },
+      { id: 'c113-m1', name: "Francesco Cervetto" },
       { id: 'c113-m2', name: "Maria Eduarda Padilha" }
     ]
   },
