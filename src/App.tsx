@@ -1222,6 +1222,9 @@ const App = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
 
+  // --- ESTADO DO MODAL DA AMAZON ---
+  const [isAmazonModalOpen, setIsAmazonModalOpen] = useState(false);
+
   // --- FUNÇÃO DE LOGIN ---
   const handleLogin = (e) => {
     e.preventDefault();
@@ -1701,15 +1704,14 @@ const App = () => {
               Tudo o que você comprar aqui, receberemos em casa!
             </p>
           
-            <a 
-              href="https://www.amazon.com.br/hz/wishlist/ls/1825NXDAE8RMA?ref_=wl_share" /* <-- Lembre-se de colocar o link real da lista de vocês aqui */
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-block w-full py-4 rounded-xl font-serif tracking-widest uppercase text-white font-bold transition-transform transform hover:scale-[1.02] shadow-sm"
+            {/* O botão agora abre o modal em vez de ir direto para o site */}
+            <button 
+              onClick={() => setIsAmazonModalOpen(true)}
+              className="w-full py-4 rounded-xl font-serif tracking-widest uppercase text-white font-bold transition-transform transform hover:scale-[1.02] shadow-sm"
               style={{ backgroundColor: colors.deepGreen }}
             >
-              Acessar Lista
-            </a>
+              Acessar Lista na Amazon
+            </button>
           </div>
 
           {/* ÁREA PIX (TEXTO DE NORONHA) */}
@@ -1935,6 +1937,53 @@ const App = () => {
         </div>
       </section>
 
+      {/* --- MODAL DE AVISO DA AMAZON --- */}
+      {isAmazonModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-60 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-[#FEFEF2] p-8 md:p-10 rounded-2xl shadow-2xl max-w-md w-full relative border border-[#CCCDB6] text-center transform transition-all">
+            
+            {/* Botão de Fechar */}
+            <button
+              onClick={() => setIsAmazonModalOpen(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-[#D4865C] transition-colors outline-none"
+            >
+              <X size={24} />
+            </button>
+            
+            <Gift className="w-12 h-12 mx-auto mb-4" style={{ color: colors.terracotta }} />
+            
+            <h3 className="text-2xl font-serif font-bold mb-4 text-gray-800">
+              Aviso Importante
+            </h3>
+            
+            <p className="text-gray-600 mb-8 leading-relaxed text-sm">
+              Para que possamos saber que o presente foi seu e agradecer com muito carinho, por favor, lembre-se de marcar a opção <strong className="text-gray-800">"Enviar como presente"</strong> na hora de finalizar a compra no site da Amazon!
+            </p>
+            
+            <div className="flex flex-col gap-3">
+              {/* Este é o link real que leva para a Amazon */}
+              <a 
+                href="https://www.amazon.com.br/hz/wishlist/ls/1825NXDAE8RMA?ref_=wl_share"
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={() => setIsAmazonModalOpen(false)} // Fecha o modal automaticamente ao clicar
+                className="w-full py-4 rounded-lg font-serif tracking-widest uppercase text-white font-bold transition-opacity hover:opacity-90 shadow-md"
+                style={{ backgroundColor: colors.deepGreen }}
+              >
+                Entendi, Ir para a Loja
+              </a>
+              
+              <button
+                onClick={() => setIsAmazonModalOpen(false)}
+                className="w-full py-3 rounded-lg font-bold tracking-widest text-sm uppercase transition-colors text-gray-500 hover:text-[#D4865C]"
+              >
+                Voltar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      
       {/* --- FOOTER --- */}
       <footer className="py-12 text-center text-white flex flex-col items-center" style={{ backgroundColor: colors.deepGreen }}>
         <img src="/monograma.png" alt="Monograma" className="h-16 mb-4 object-contain brightness-0 invert opacity-90" />
