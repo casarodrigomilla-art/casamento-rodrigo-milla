@@ -1956,26 +1956,55 @@ const App = () => {
               Aviso Importante
             </h3>
             
-            <p className="text-gray-600 mb-8 leading-relaxed text-sm">
-              Para que possamos saber que o presente foi seu e agradecer com muito carinho, por favor, lembre-se de marcar a opção <strong className="text-gray-800">"Enviar como presente"</strong> na hora de finalizar a compra no site da Amazon!
+            {/* TEXTO EXPLICATIVO */}
+            <p className="text-gray-600 mb-4 leading-relaxed text-sm">
+              Para que possamos agradecer o seu carinho, lembre-se de marcar a opção <strong className="text-gray-800">"Enviar como presente"</strong> na hora de finalizar a compra.
             </p>
             
+            <div className="bg-[#F9F9F4] border-l-4 p-3 mb-8 text-left rounded-r-lg" style={{ borderLeftColor: colors.terracotta }}>
+              <p className="text-gray-600 text-xs leading-relaxed italic">
+                <strong>Nota:</strong> Alguns itens de parceiros da Amazon não possuem essa opção. Se for o caso, ou se esquecer de marcar, por favor, nos mande uma mensagem avisando o que escolheu!
+              </p>
+            </div>
+            
             <div className="flex flex-col gap-3">
-              {/* Este é o link real que leva para a Amazon */}
+              {/* Botão Principal - Ir para a Loja */}
               <a 
                 href="https://www.amazon.com.br/hz/wishlist/ls/1825NXDAE8RMA?ref_=wl_share"
                 target="_blank" 
                 rel="noopener noreferrer"
-                onClick={() => setIsAmazonModalOpen(false)} // Fecha o modal automaticamente ao clicar
+                onClick={() => setIsAmazonModalOpen(false)}
                 className="w-full py-4 rounded-lg font-serif tracking-widest uppercase text-white font-bold transition-opacity hover:opacity-90 shadow-md"
                 style={{ backgroundColor: colors.deepGreen }}
               >
                 Entendi, Ir para a Loja
               </a>
               
+              {/* NOVOS BOTÕES DIVIDIDOS: WhatsApp do Rodrigo e da Milla lado a lado */}
+              <div className="flex gap-2 w-full mt-1">
+                <a 
+                  href="https://wa.me/5511975647161?text=Oi%20Rô!%20Acabei%20de%20comprar%20um%20presente%20para%20vocês%20na%20Amazon.%20Fui%20eu%20que%20dei%20o..."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-3 px-1 rounded-lg font-bold tracking-widest text-[10px] md:text-xs uppercase transition-colors border-2 hover:bg-[#EBDDD3] hover:text-[#D4865C] flex items-center justify-center text-center"
+                  style={{ color: colors.deepGreen, borderColor: colors.paleSage }}
+                >
+                  Avisar Rodrigo
+                </a>
+                <a 
+                  href="https://wa.me/5511998509909?text=Oi%20Milla!%20Acabei%20de%20comprar%20um%20presente%20para%20vocês%20na%20Amazon.%20Fui%20eu%20que%20dei%20o..."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-3 px-1 rounded-lg font-bold tracking-widest text-[10px] md:text-xs uppercase transition-colors border-2 hover:bg-[#EBDDD3] hover:text-[#D4865C] flex items-center justify-center text-center"
+                  style={{ color: colors.deepGreen, borderColor: colors.paleSage }}
+                >
+                  Avisar Milla
+                </a>
+              </div>
+              
               <button
                 onClick={() => setIsAmazonModalOpen(false)}
-                className="w-full py-3 rounded-lg font-bold tracking-widest text-sm uppercase transition-colors text-gray-500 hover:text-[#D4865C]"
+                className="w-full py-2 rounded-lg font-bold tracking-widest text-xs uppercase transition-colors text-gray-400 hover:text-[#D4865C] mt-2"
               >
                 Voltar
               </button>
