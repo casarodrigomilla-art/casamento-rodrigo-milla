@@ -1182,9 +1182,10 @@ const GUEST_DATABASE = [
   },
   {
     id: 'convite-155',
-    groupName: "Laura",
+    groupName: "Agustim e Maria",
     members: [
-      { id: 'c155-m1', name: "Laura Pugliese" },
+      { id: 'c155-m1', name: "Agustim Molero" },
+      { id: 'c155-m2', name: "Maria Cecília Paes de Barros" }
     ]
   },
   {
@@ -1193,6 +1194,14 @@ const GUEST_DATABASE = [
     members: [
       { id: 'c156-m1', name: "Beatriz Miranda" },
       { id: 'c156-m2', name: "Arthur Canto Cerasoli" }
+    ]
+  },
+  {
+    id: 'convite-157',
+    groupName: "Edith e Eduardo",
+    members: [
+      { id: 'c157-m1', name: "Edith Rottmann" },
+      { id: 'c157-m2', name: "Eduardo Rottmann" }
     ]
   }
 ];
