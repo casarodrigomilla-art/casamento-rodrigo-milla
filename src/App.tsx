@@ -1021,9 +1021,10 @@ const GUEST_DATABASE = [
   },
   {
     id: 'convite-132',
-    groupName: "Guilherme",
+    groupName: "Guilherme e Namorada",
     members: [
-      { id: 'c132-m1', name: "Guilherme Pires" }
+      { id: 'c132-m1', name: "Guilherme Pires" },
+      { id: 'c132-m2', name: "Namorada" }
     ]
   },
   {
@@ -1202,6 +1203,37 @@ const GUEST_DATABASE = [
     members: [
       { id: 'c157-m1', name: "Edith Rottmann" },
       { id: 'c157-m2', name: "Eduardo Rottmann" }
+    ]
+  },
+  {
+    id: 'convite-158',
+    groupName: "Luis e Laura",
+    members: [
+      { id: 'c158-m1', name: "Luis Eduardo Bayer" },
+      { id: 'c158-m2', name: "Laura Galvão Bueno" }
+    ]
+  },
+  {
+    id: 'convite-159',
+    groupName: "Diogo",
+    members: [
+      { id: 'c159-m1', name: "Diogo Bassinello" }
+    ]
+  },
+  {
+    id: 'convite-160',
+    groupName: "Victoria e Diego",
+    members: [
+      { id: 'c160-m1', name: "Victoria Massis" },
+      { id: 'c160-m2', name: "Diego Viveiros" }
+    ]
+  },
+  {
+    id: 'convite-161',
+    groupName: "Carlos e Monica",
+    members: [
+      { id: 'c161-m1', name: "Carlos Maia" },
+      { id: 'c161-m2', name: "Monica" }
     ]
   }
 ];
