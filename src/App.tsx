@@ -1842,7 +1842,8 @@ const App = () => {
         </div>
       </section>
       
-      {/*
+      {/* --- RSVP ANTIGO (MANTIDO COMO COMENTÁRIO PARA CONSULTA OU REATIVAÇÃO) --- */}
+     {false && (
       {/* --- RSVP SECTION (AGORA COM GRUPOS E SHEETDB) --- */}
       <section id="rsvp" className="py-20 px-4 relative overflow-hidden">
         <div className="max-w-2xl mx-auto text-center relative z-10">
@@ -2012,7 +2013,7 @@ const App = () => {
           </div>
         </div>
       </section>
-      */}
+    )}
       
       {/* --- MODAL DE AVISO DA AMAZON --- */}
       {isAmazonModalOpen && (
