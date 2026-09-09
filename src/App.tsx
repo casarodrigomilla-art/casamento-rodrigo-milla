@@ -1808,6 +1808,41 @@ const App = () => {
         </div>
       </section>
 
+      {/* --- RSVP SECTION (COMUNICADO DE CONTATO DA ASSESSORIA) --- */}
+      <section id="rsvp" className="py-20 px-4 relative overflow-hidden">
+        <div className="max-w-2xl mx-auto text-center relative z-10">
+          <h2 className="text-3xl md:text-5xl font-serif mb-6" style={{ color: colors.deepGreen }}>RSVP</h2>
+          
+          <div className="bg-white p-8 md:p-12 rounded-xl shadow-2xl border-t-4" style={{ borderColor: colors.terracotta }}>
+            <div className="flex flex-col items-center text-center space-y-4">
+              
+              <div 
+                className="w-16 h-16 rounded-full flex items-center justify-center mb-2"
+                style={{ backgroundColor: `${colors.palePink}` }}
+              >
+                <Heart className="w-8 h-8" style={{ color: colors.terracotta }} />
+              </div>
+
+              <h3 className="text-2xl font-serif font-bold" style={{ color: colors.deepGreen }}>
+                Confirmação de Presença
+              </h3>
+
+              <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-lg">
+                Para podermos preparar tudo com muito carinho e organização, nossa equipe de assessoria entrará em contato diretamente com você em breve para confirmar sua presença!
+              </p>
+
+              <div className="w-16 h-[1px] bg-[#D4865C] my-4 opacity-40"></div>
+
+              <p className="text-sm italic text-gray-500">
+                Estamos muito felizes em compartilhar este momento tão especial com você. Se precisar, entre em contato diretamente com os noivos.
+              </p>
+
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/*
       {/* --- RSVP SECTION (AGORA COM GRUPOS E SHEETDB) --- */}
       <section id="rsvp" className="py-20 px-4 relative overflow-hidden">
         <div className="max-w-2xl mx-auto text-center relative z-10">
@@ -1977,7 +2012,7 @@ const App = () => {
           </div>
         </div>
       </section>
-
+*/}
       {/* --- MODAL DE AVISO DA AMAZON --- */}
       {isAmazonModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-60 backdrop-blur-sm animate-fadeIn">
