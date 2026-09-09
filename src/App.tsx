@@ -1843,9 +1843,9 @@ const App = () => {
       </section>
       
       {/* --- RSVP ANTIGO (MANTIDO COMO COMENTÁRIO PARA CONSULTA OU REATIVAÇÃO) --- */}
-     {false && (
       {/* --- RSVP SECTION (AGORA COM GRUPOS E SHEETDB) --- */}
-      <section id="rsvp" className="py-20 px-4 relative overflow-hidden">
+      <div className="hidden">      
+      <section id="rsvp-antigo" className="py-20 px-4 relative overflow-hidden">
         <div className="max-w-2xl mx-auto text-center relative z-10">
           <h2 className="text-3xl md:text-5xl font-serif mb-8" style={{ color: colors.deepGreen }}>RSVP</h2>
           <p className="mb-8" style={{ color: colors.deepGreen }}>Por favor, confirme sua presença até <strong>08 de Setembro de 2026</strong>.</p>
@@ -2013,8 +2013,8 @@ const App = () => {
           </div>
         </div>
       </section>
-    )}
-      
+  </div> {/* <-- ADICIONE O FECHAMENTO DO DIV AQUI */}
+  
       {/* --- MODAL DE AVISO DA AMAZON --- */}
       {isAmazonModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-60 backdrop-blur-sm animate-fadeIn">
